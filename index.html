@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رياض جعفر جبار | مهندس أنظمة مدمجة</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+         :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --light-bg: #f5f5f5;
+            --dark-bg: #2c3e50;
+            --white: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Tajawal', 'Roboto', sans-serif;
+            line-height: 1.8;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+        
+        body[dir="rtl"] {
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        body[dir="ltr"] {
+            font-family: 'Roboto', sans-serif;
+        }
+        /* Header Styles */
+        
+        header {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--white);
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        .links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .links li {
+            margin: 0 1rem;
+        }
+        
+        .links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+        
+        .links a:hover::after,
+        .links .active a::after {
+            width: 100%;
+            right: auto;
+            left: 0;
+        }
+        
+        .social-links a {
+            color: var(--white);
+            margin: 0 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .lang-switcher {
+            margin-right: 1rem;
+        }
+        
+        .lang-switcher button {
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            font-weight: 500;
+            opacity: 0.7;
+        }
+        
+        .lang-switcher button.active {
+            opacity: 1;
+            color: var(--primary-color);
+        }
+        
+        #btnMenu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--white);
+        }
+        /* Hero Section */
+        
+        .hero-sec {
+            padding: 8rem 2rem 4rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--primary-color) 100%);
+            color: var(--white);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .div-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .div-text h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .div-text span {
+            display: inline-block;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .div-text p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary-color);
+        }
+        
+        .div-img {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .div-img img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        /* Sections */
+        
+        .section {
+            padding: 5rem 2rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark-bg);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            height: 3px;
+            width: 50%;
+            background-color: var(--primary-color);
+        }
+        
+        [dir="rtl"] .section-title::after {
+            right: 0;
+        }
+        
+        [dir="ltr"] .section-title::after {
+            left: 0;
+        }
+        /* About Section */
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+        
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .about-img img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-bg);
+        }
+        
+        .info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .info-item {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .info-item p {
+            margin-bottom: 0.8rem;
+        }
+        
+        .info-item strong {
+            color: var(--dark-bg);
+        }
+        /* Skills Section */
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .skill-category {
+            flex: 1;
+            min-width: 300px;
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .skill-category h3 {
+            color: var(--dark-bg);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-level {
+            height: 100%;
+            background: var(--primary-color);
+        }
+        /* Projects Section */
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .project-card:hover .project-img img {
+            transform: scale(1.1);
+        }
+        
+        .project-info {
+            padding: 1.5rem;
+        }
+        
+        .project-info h3 {
+            color: var(--dark-bg);
+            margin-bottom: 1rem;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .project-tech span {
+            background: #f0f0f0;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--dark-bg);
+        }
+        /* Contact Section */
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            background: var(--dark-bg);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+        
+        .contact-info p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        [dir="rtl"] .contact-item i {
+            margin-left: 1rem;
+        }
+        
+        [dir="ltr"] .contact-item i {
+            margin-right: 1rem;
+        }
+        
+        .contact-item i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        .contact-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-social a {
+            color: var(--white);
+            font-size: 1.3rem;
+        }
+        
+        .contact-social a:hover {
+            color: var(--primary-color);
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-bg);
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        /* Footer */
+        
+        footer {
+            background: var(--dark-bg);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        footer p {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 992px) {
+            .div-text h1 {
+                font-size: 2.5rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: calc(100vh - 70px);
+                background-color: var(--dark-bg);
+                flex-direction: column;
+                padding: 2rem;
+                transition: right 0.3s;
+                z-index: 999;
+            }
+            [dir="ltr"] .links {
+                right: auto;
+                left: -100%;
+            }
+            .links.active {
+                right: 0;
+            }
+            [dir="ltr"] .links.active {
+                left: 0;
+            }
+            .links li {
+                margin: 1rem 0;
+            }
+            #btnMenu {
+                display: block;
+            }
+            .lang-switcher {
+                margin-right: auto;
+                margin-left: 1rem;
+            }
+            [dir="ltr"] .lang-switcher {
+                margin-left: auto;
+                margin-right: 1rem;
+            }
+            .hero-sec {
+                padding-top: 6rem;
+                text-align: center;
+            }
+            .div-text {
+                text-align: center;
+            }
+            .btn {
+                margin-right: 0;
+                margin-bottom: 1rem;
+                display: block;
+                width: 100%;
+            }
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .info {
+                justify-content: center;
+            }
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .div-text h1 {
+                font-size: 2rem;
+            }
+            .section {
+                padding: 3rem 1rem;
+            }
+            .project-card {
+                min-width: 100%;
+            }
+        }
+        /* ملفاتي - قسم جديد */
+        
+        .my-files {
+            padding: 5rem 2rem;
+            background-color: #f9f9f9;
+        }
+        
+        .files-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .file-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+        
+        .file-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .file-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .file-name {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--dark-bg);
+        }
+        
+        .file-download {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .file-download:hover {
+            text-decoration: underline;
+        }
+        
+        .upload-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .upload-btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        
+        .upload-btn:hover {
+            background: #2980b9;
+        }
+        
+        #fileInput {
+            display: none;
+        }
+    </style>
+</head>
+
+<body dir="rtl">
+    <header>
+        <nav>
+            <a href="#" class="logo"><span>رياض</span> جعفر جبار</a>
+            <ul class="links">
+                <li class="active"><a href="#home">الرئيسية</a></li>
+                <li><a href="#about">عنّي</a></li>
+                <li><a href="#skills">المهارات</a></li>
+                <li><a href="#projects">المشاريع</a></li>
+                <li><a href="#contact">اتصل بي</a></li>
+            </ul>
+
+            <div class="lang-switcher">
+                <button onclick="switchLanguage('ar')" class="active">العربية</button>
+                <span style="color: var(--white)">|</span>
+                <button onclick="switchLanguage('en')">English</button>
+            </div>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/yourhandle" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+
+            <i id="btnMenu" class="fas fa-bars"></i>
+        </nav>
+    </header>
+
+    <section id="home" class="hero-sec">
+        <div class="container">
+            <div class="div-text">
+                <h1 class="ar-text">رياض جعفر جبار</h1>
+                <h1 class="en-text" style="display: none;">Riyad Jaafar Jabbar</h1>
+
+                <span class="ar-text">مهندس إلكترونيك الأنظمة المدمجة</span>
+                <span class="en-text" style="display: none;">Embedded Systems Engineer</span>
+
+                <p class="ar-text">
+                    مهندس إلكترونيك متخصص في الأنظمة المدمجة من الجزائر. لدي خبرة في تصميم وتطوير الأنظمة المدمجة، برمجة المتحكمات الدقيقة، وتطوير البرامج ذات المستوى المنخفض.
+                </p>
+                <p class="en-text" style="display: none;">
+                    Electronics engineer specialized in embedded systems from Algeria. I have experience in embedded system design, microcontroller programming, and low-level software development.
+                </p>
+
+                <div>
+                    <a href="#projects" class="btn ar-text">مشاريعي</a>
+                    <a href="#projects" class="btn en-text" style="display: none;">My Projects</a>
+                    <a href="#contact" class="btn btn-outline ar-text">تواصل معي</a>
+                    <a href="#contact" class="btn btn-outline en-text" style="display: none;">Contact Me</a>
+                </div>
+            </div>
+
+            <div class="div-img">
+                <img src="https://instagram.fcfk1-1.fna.fbcdn.net/v/t51.2885-19/513854048_18520436815057204_4967450930863764304_n.jpg?stp=dst-jpg_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fcfk1-1.fna.fbcdn.net&_nc_cat=104&_nc_oc=Q6cZ2QFYCg-wKI6J3L8eKkTHl9_gSSUKCFNcp0B7q0rQeVnb23TQioi20292d2X75DnYzXU&_nc_ohc=V9ZG-xn-EaYQ7kNvwHLhIj0&_nc_gid=1L89lV_d1YH_0-icCzqfig&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfSEEXYljkjd3ZaXuFIATNJMapP41VTopIwh5aHfRvoXhQ&oe=6889DA75&_nc_sid=8b3546"
+                    alt="رياض جعفر جبار">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title ar-text">عنّي</h2>
+            <h2 class="section-title en-text" style="display: none;">About Me</h2>
+
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://lh3.googleusercontent.com/a/ACg8ocLhMA4pu_JB0ahfjXXwriJsMSb9fEHc-MMD-VaTCfTLMG0K0GWN=s288-c-no" </div>
+                    <div class="about-text">
+                        <h3 class="ar-text">من أنا؟</h3>
+                        <h3 class="en-text" style="display: none;">Who am I?</h3>
+
+                        <p class="ar-text">
+                            أنا رياض جعفر جبار، مهندس إلكترونيك متخصص في الأنظمة المدمجة من الجزائر. حاصل على شهادة الهندسة في الإلكترونيك من جامعة وهران، وأعمل في هذا المجال منذ أكثر من 5 سنوات.
+                        </p>
+                        <p class="en-text" style="display: none;">
+                            I'm Riyad Jaafar Jabbar, an electronics engineer specialized in embedded systems from Algeria. I hold an engineering degree in electronics from the University of Oran and have been working in this field for over 5 years.
+                        </p>
+
+                        <p class="ar-text">
+                            لدي شغف كبير بتصميم الأنظمة الذكية وتطوير حلول برمجية فعالة للمتحكمات الدقيقة. أعمل حاليًا كمهندس أنظمة مدمجة في شركة تقنية في الجزائر.
+                        </p>
+                        <p class="en-text" style="display: none;">
+                            I have a great passion for designing smart systems and developing efficient software solutions for microcontrollers. I currently work as an embedded systems engineer at a tech company in Algeria.
+                        </p>
+
+                        <div class="info">
+                            <div class="info-item">
+                                <p class="ar-text"><strong>الاسم:</strong> رياض جعفر جبار</p>
+                                <p class="en-text" style="display: none;"><strong>Name:</strong> Riyad Jaafar Jabbar</p>
+
+                                <p class="ar-text"><strong>العمر:</strong> 28 سنة</p>
+                                <p class="en-text" style="display: none;"><strong>Age:</strong> 28 years</p>
+                            </div>
+                            <div class="info-item">
+                                <p class="ar-text"><strong>البريد:</strong> riyad.jaafar@example.com</p>
+                                <p class="en-text" style="display: none;"><strong>Email:</strong> riyad.jaafar@example.com</p>
+
+                                <p class="ar-text"><strong>الخبرة:</strong> 5+ سنوات</p>
+                                <p class="en-text" style="display: none;"><strong>Experience:</strong> 5+ years</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title ar-text">المهارات</h2>
+            <h2 class="section-title en-text" style="display: none;">Skills</h2>
+
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3 class="ar-text">برمجة الأنظمة المدمجة</h3>
+                    <h3 class="en-text" style="display: none;">Embedded Programming</h3>
+
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span class="ar-text">C/C++</span>
+                            <span class="en-text" style="display: none;">C/C++</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span class="ar-text">برمجة المتحكمات</span>
+                            <span class="en-text" style="display: none;">MCU Programming</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span class="ar-text">RTOS</span>
+                            <span class="en-text" style="display: none;">RTOS</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span class="ar-text">Assembly</span>
+                            <span class="en-text" style="display: none;">Assembly</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="ar-text">تطوير الأجهزة</h3>
+                    <h3 class="en-text" style="display: none;">Hardware Development</h3>
+
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span class="ar-text">تصميم الدوائر</span>
+                            <span class="en-text" style="display: none;">Circuit Design</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 88%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span class="ar-text">PCB Design</span>
+                            <span class="en-text" style="display: none;">PCB Design</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span class="ar-text">FPGA/VHDL</span>
+                            <span class="en-text" style="display: none;">FPGA/VHDL</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span class="ar-text">نظم IoT</span>
+                            <span class="en-text" style="display: none;">IoT Systems</span>
+                            <span>82%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 82%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="ar-text">مهارات أخرى</h3>
+                    <h3 class="en-text" style="display: none;">Other Skills</h3>
+
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span class="ar-text">Python</span>
+                            <span class="en-text" style="display: none;">Python</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span class="ar-text">MATLAB</span>
+                            <span class="en-text" style="display: none;">MATLAB</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span class="ar-text">Git</span>
+                            <span class="en-text" style="display: none;">Git</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span class="ar-text">Linux</span>
+                            <span class="en-text" style="display: none;">Linux</span>
+                            <span>78%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 78%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title ar-text">المشاريع</h2>
+            <h2 class="section-title en-text" style="display: none;">Projects</h2>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://blog.prevounce.com/hubfs/Stats.jpeg" alt="نظام مدمج">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="ar-text">نظام مراقبة ذكي</h3>
+                        <h3 class="en-text" style="display: none;">Smart Monitoring System</h3>
+
+                        <p class="ar-text">
+                            نظام مراقبة يعتمد على STM32 لرصد الظروف البيئية مع نقل بيانات لاسلكي وتطبيق ويب للعرض.
+                        </p>
+                        <p class="en-text" style="display: none;">
+                            STM32-based monitoring system for environmental conditions with wireless data transmission and a web display application.
+                        </p>
+
+                        <div class="project-tech">
+                            <span>STM32</span>
+                            <span>C</span>
+                            <span>IoT</span>
+                        </div>
+                        <a href="#" class="btn ar-text">عرض التفاصيل</a>
+                        <a href="#" class="btn en-text" style="display: none;">View Details</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://5.imimg.com/data5/EE/EM/MY-4370182/robot-arm-1000x1000.jpg" alt="ذراع روبوتي">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="ar-text">ذراع روبوتي صناعي</h3>
+                        <h3 class="en-text" style="display: none;">Industrial Robotic Arm</h3>
+
+                        <p class="ar-text">
+                            تصميم وتنفيذ ذراع روبوتي 4 محاور مع واجهة تحكم مخصصة باستخدام Arduino وبرمجة PID.
+                        </p>
+                        <p class="en-text" style="display: none;">
+                            Design and implementation of a 4-axis robotic arm with custom control interface using Arduino and PID programming.
+                        </p>
+
+                        <div class="project-tech">
+                            <span>Arduino</span>
+                            <span>C++</span>
+                            <span>PID</span>
+                        </div>
+                        <a href="#" class="btn ar-text">عرض التفاصيل</a>
+                        <a href="#" class="btn en-text" style="display: none;">View Details</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://labvolt.festo.com/Medias/images/800x800/7646_40_91031_20_gallery_png.jpg" alt="مشروع FPGA">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="ar-text">معالج إشارة رقمية</h3>
+                        <h3 class="en-text" style="display: none;">Digital Signal Processor</h3>
+
+                        <p class="ar-text">
+                            تطوير معالج إشارة رقمية على FPGA لمعالجة الصوت باستخدام خوارزميات DSP مخصصة.
+                        </p>
+                        <p class="en-text" style="display: none;">
+                            Development of a digital signal processor on FPGA for audio processing using custom DSP algorithms.
+                        </p>
+
+                        <div class="project-tech">
+                            <span>FPGA</span>
+                            <span>VHDL</span>
+                            <span>DSP</span>
+                        </div>
+                        <a href="#" class="btn ar-text">عرض التفاصيل</a>
+                        <a href="#" class="btn en-text" style="display: none;">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title ar-text">اتصل بي</h2>
+            <h2 class="section-title en-text" style="display: none;">Contact Me</h2>
+
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3 class="ar-text">معلومات التواصل</h3>
+                    <h3 class="en-text" style="display: none;">Contact Information</h3>
+
+                    <p class="ar-text">
+                        لا تتردد في التواصل معي عبر أي من الطرق التالية. سأكون سعيدًا بالرد على استفساراتك.
+                    </p>
+                    <p class="en-text" style="display: none;">
+                        Feel free to contact me through any of the following methods. I'll be happy to answer your inquiries.
+                    </p>
+
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>riyadhdjaafeurdjebbar@gmail.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>+213 123 456 789</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p class="ar-text">وهران، الجزائر</p>
+                        <p class="en-text" style="display: none;">Oran, Algeria</p>
+                    </div>
+
+                    <div class="contact-social">
+                        <a href="https://www.linkedin.com/in/riyadh-djaafeur-djebbar" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/RDjaafeur" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://twitter.com/yourhandle" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/riad.dja.5" target="_blank"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name" class="ar-text">الاسم</label>
+                        <label for="name" class="en-text" style="display: none;">Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="ar-text">البريد الإلكتروني</label>
+                        <label for="email" class="en-text" style="display: none;">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject" class="ar-text">الموضوع</label>
+                        <label for="subject" class="en-text" style="display: none;">Subject</label>
+                        <input type="text" id="subject">
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="ar-text">الرسالة</label>
+                        <label for="message" class="en-text" style="display: none;">Message</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn ar-text">إرسال الرسالة</button>
+                    <button type="submit" class="btn en-text" style="display: none;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#home" class="ar-text">الرئيسية</a>
+                <a href="#home" class="en-text" style="display: none;">Home</a>
+
+                <a href="#about" class="ar-text">عنّي</a>
+                <a href="#about" class="en-text" style="display: none;">About</a>
+
+                <a href="#skills" class="ar-text">المهارات</a>
+                <a href="#skills" class="en-text" style="display: none;">Skills</a>
+
+                <a href="#projects" class="ar-text">المشاريع</a>
+                <a href="#projects" class="en-text" style="display: none;">Projects</a>
+
+                <a href="#contact" class="ar-text">اتصل بي</a>
+                <a href="#contact" class="en-text" style="display: none;">Contact</a>
+            </div>
+
+            <p class="ar-text">جميع الحقوق محفوظة &copy; <span id="year"></span> رياض جعفر جبار</p>
+            <p class="en-text" style="display: none;">All Rights Reserved &copy; <span id="year-en"></span> Riyad DJaafar DJabbar</p>
+        </div>
+        <section id="files" class="my-files section">
+            <div class="container">
+                <h2 class="section-title ar-text">ملفاتي</h2>
+                <h2 class="section-title en-text" style="display: none;">My Files</h2>
+
+                <p class="ar-text">هنا يمكنك تحميل السيرة الذاتية والملفات الأخرى الخاصة بي</p>
+                <p class="en-text" style="display: none;">Here you can download my CV and other files</p>
+
+                <div class="files-container">
+                    <!-- ملف السيرة الذاتية -->
+                    <div class="file-card">
+                        <div class="file-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <h3 class="file-name ar-text">السيرة الذاتية</h3>
+                        <h3 class="file-name en-text" style="display: none;">Curriculum Vitae</h3>
+                        <p class="ar-text">آخر تحديث: مايو 2023</p>
+                        <p class="en-text" style="display: none;">Last update: May 2023</p>
+                        <a href="mesfiles/cv.pdf" download class="file-download ar-text">تحميل</a>
+                        <a href="mesfiles/cv.pdf" download class="file-download en-text" style="display: none;">Download</a>
+                    </div>
+
+                    <!-- شهادات -->
+                    <div class="file-card">
+                        <div class="file-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3 class="file-name ar-text">شهاداتي</h3>
+                        <h3 class="file-name en-text" style="display: none;">Certificates</h3>
+                        <p class="ar-text">مجموعة من الشهادات</p>
+                        <p class="en-text" style="display: none;">Collection of certificates</p>
+                        <a href="mesfiles/certificates.zip" download class="file-download ar-text">تحميل</a>
+                        <a href="mesfiles/certificates.zip" download class="file-download en-text" style="display: none;">Download</a>
+                    </div>
+
+                    <!-- مشاريع -->
+                    <div class="file-card">
+                        <div class="file-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h3 class="file-name ar-text">نماذج المشاريع</h3>
+                        <h3 class="file-name en-text" style="display: none;">Projects Samples</h3>
+                        <p class="ar-text">أمثلة من أعمالي</p>
+                        <p class="en-text" style="display: none;">Samples of my work</p>
+                        <a href="mesfiles/projects_samples.zip" download class="file-download ar-text">تحميل</a>
+                        <a href="mesfiles/projects_samples.zip" download class="file-download en-text" style="display: none;">Download</a>
+                    </div>
+                </div>
+
+                <!-- قسم الرفع (لإدارة الموقع) -->
+                <div class="upload-section">
+                    <h3 class="ar-text">رفع ملف جديد</h3>
+                    <h3 class="en-text" style="display: none;">Upload New File</h3>
+
+                    <input type="file" id="fileInput">
+                    <label for="fileInput" class="upload-btn ar-text">اختر ملف</label>
+                    <label for="fileInput" class="upload-btn en-text" style="display: none;">Choose File</label>
+
+                    <button id="uploadBtn" class="btn ar-text" style="margin-left: 1rem;">رفع الملف</button>
+                    <button id="uploadBtn" class="btn en-text" style="margin-left: 1rem; display: none;">Upload File</button>
+                </div>
+            </div>
+        </section>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        let btnMenu = document.getElementById("btnMenu");
+        let NavLinks = document.querySelector(".links");
+
+        btnMenu.onclick = function() {
+            btnMenu.classList.toggle("fa-times");
+            NavLinks.classList.toggle("active");
+        }
+
+        // Language Switching Function
+        function switchLanguage(lang) {
+            const arElements = document.querySelectorAll('.ar-text');
+            const enElements = document.querySelectorAll('.en-text');
+            const langButtons = document.querySelectorAll('.lang-switcher button');
+
+            if (lang === 'ar') {
+                document.body.setAttribute('dir', 'rtl');
+
+                arElements.forEach(el => {
+                    el.style.display = 'block';
+                });
+
+                enElements.forEach(el => {
+                    el.style.display = 'none';
+                });
+
+                langButtons[0].classList.add('active');
+                langButtons[1].classList.remove('active');
+            } else {
+                document.body.setAttribute('dir', 'ltr');
+
+                arElements.forEach(el => {
+                    el.style.display = 'none';
+                });
+
+                enElements.forEach(el => {
+                    el.style.display = 'block';
+                });
+
+                langButtons[0].classList.remove('active');
+                langButtons[1].classList.add('active');
+            }
+
+            // Close mobile menu if open
+            if (NavLinks.classList.contains('active')) {
+                btnMenu.classList.remove("fa-times");
+                NavLinks.classList.remove("active");
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // Close mobile menu if open
+                if (NavLinks.classList.contains('active')) {
+                    btnMenu.classList.remove("fa-times");
+                    NavLinks.classList.remove("active");
+                }
+            });
+        });
+
+        // Update year in footer
+        const currentYear = new Date().getFullYear();
+        document.getElementById('year').textContent = currentYear;
+        document.getElementById('year-en').textContent = currentYear;
+
+        // Form submission
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert(document.querySelector('.ar-text').style.display !== 'none' ?
+                    'تم إرسال رسالتك بنجاح! سأتواصل معك قريبًا.' :
+                    'Your message has been sent successfully! I will contact you soon.');
+                this.reset();
+            });
+        }
+        // ملفاتي - JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            const fileInput = document.getElementById('fileInput');
+            const uploadBtn = document.getElementById('uploadBtn');
+
+            if (uploadBtn) {
+                uploadBtn.addEventListener('click', function() {
+                    if (fileInput.files.length > 0) {
+                        const file = fileInput.files[0];
+                        const formData = new FormData();
+                        formData.append('file', file);
+
+                        // هنا يجب إضافة كود الإرسال إلى الخادم
+                        fetch('/upload', {
+                                method: 'POST',
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                const isArabic = document.querySelector('.ar-text').style.display !== 'none';
+                                alert(isArabic ?
+                                    'تم رفع الملف بنجاح: ' + data.filename :
+                                    'File uploaded successfully: ' + data.filename);
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                const isArabic = document.querySelector('.ar-text').style.display !== 'none';
+                                alert(isArabic ?
+                                    'حدث خطأ أثناء رفع الملف' :
+                                    'Error uploading file');
+                            });
+                    } else {
+                        const isArabic = document.querySelector('.ar-text').style.display !== 'none';
+                        alert(isArabic ?
+                            'الرجاء اختيار ملف أولاً' :
+                            'Please select a file first');
+                    }
+                });
+            }
+
+            // تحديث رابط التنقل في الهيدر
+            const navLinks = document.querySelector('.links');
+            const filesNavItem = document.createElement('li');
+            filesNavItem.innerHTML = '<a href="#files" class="ar-text">ملفاتي</a><a href="#files" class="en-text" style="display: none;">My Files</a>';
+            navLinks.insertBefore(filesNavItem, navLinks.children[4]); // إدراج قبل "اتصل بي"
+        });
+    </script>
+</body>
+
+</html>
