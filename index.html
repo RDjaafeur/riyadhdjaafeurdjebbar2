@@ -606,6 +606,13 @@
             .contact-container {
                 flex-direction: column;
             }
+            .about-img img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 10px;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+                border: 3px solid var(--primary-color);
+            }
         }
         
         @media (max-width: 480px) {
@@ -669,31 +676,70 @@
         .file-download:hover {
             text-decoration: underline;
         }
+        /* أنماط زر التبديل */
         
-        .upload-section {
-            margin-top: 3rem;
-            padding: 2rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        .theme-switcher {
+            margin-right: 1rem;
         }
         
-        .upload-btn {
-            display: inline-block;
-            background: var(--primary-color);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
+        [dir="ltr"] .theme-switcher {
+            margin-right: 0;
+            margin-left: 1rem;
+        }
+        
+        #themeToggle {
+            background: none;
+            border: none;
+            color: var(--white);
             cursor: pointer;
-            margin-top: 1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        /* أنماط الوضع الليلي */
+        
+        body.dark-mode {
+            --text-color: #f0f0f0;
+            --light-bg: #1a1a1a;
+            --white: #2d2d2d;
+            --dark-bg: #121212;
         }
         
-        .upload-btn:hover {
-            background: #2980b9;
+        body.dark-mode .section {
+            background-color: #1a1a1a;
         }
         
-        #fileInput {
-            display: none;
+        body.dark-mode .skill-category,
+        body.dark-mode .project-card,
+        body.dark-mode .contact-form {
+            background: #2d2d2d;
+            color: #f0f0f0;
+        }
+        
+        body.dark-mode .project-tech span {
+            background: #3d3d3d;
+            color: #f0f0f0;
+        }
+        
+        body.dark-mode .file-card {
+            background: #2d2d2d;
+            color: #f0f0f0;
+        }
+        
+        body.dark-mode .file-name {
+            color: #f0f0f0;
+        }
+        
+        @media (max-width: 768px) {
+            .theme-switcher {
+                margin-right: auto;
+                margin-left: 1rem;
+            }
+            [dir="ltr"] .theme-switcher {
+                margin-left: auto;
+                margin-right: 1rem;
+            }
         }
     </style>
 </head>
@@ -715,7 +761,14 @@
                 <span style="color: var(--white)">|</span>
                 <button onclick="switchLanguage('en')">English</button>
             </div>
-
+            <!-- داخل عنصر <nav> بعد عنصر .lang-switcher -->
+            <div class="theme-switcher">
+                <button id="themeToggle" aria-label="تبديل الوضع">
+        <i class="fas fa-moon"></i>
+        <span class="ar-text">الوضع الليلي</span>
+        <span class="en-text" style="display: none;">Dark Mode</span>
+    </button>
+            </div>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
@@ -723,6 +776,7 @@
             </div>
 
             <i id="btnMenu" class="fas fa-bars"></i>
+
         </nav>
     </header>
 
@@ -730,7 +784,7 @@
         <div class="container">
             <div class="div-text">
                 <h1 class="ar-text">رياض جعفر جبار</h1>
-                <h1 class="en-text" style="display: none;">Riyad Jaafar Jabbar</h1>
+                <h1 class="en-text" style="display: none;">Riyad DJaafar DJabbar</h1>
 
                 <span class="ar-text">مهندس إلكترونيك الأنظمة المدمجة</span>
                 <span class="en-text" style="display: none;">Embedded Systems Engineer</span>
@@ -750,11 +804,7 @@
                 </div>
             </div>
 
-            <div class="div-img">
-                <img src="https://instagram.fcfk1-1.fna.fbcdn.net/v/t51.2885-19/513854048_18520436815057204_4967450930863764304_n.jpg?stp=dst-jpg_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fcfk1-1.fna.fbcdn.net&_nc_cat=104&_nc_oc=Q6cZ2QFYCg-wKI6J3L8eKkTHl9_gSSUKCFNcp0B7q0rQeVnb23TQioi20292d2X75DnYzXU&_nc_ohc=V9ZG-xn-EaYQ7kNvwHLhIj0&_nc_gid=1L89lV_d1YH_0-icCzqfig&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfSEEXYljkjd3ZaXuFIATNJMapP41VTopIwh5aHfRvoXhQ&oe=6889DA75&_nc_sid=8b3546"
-                    alt="رياض جعفر جبار">
-            </div>
-        </div>
+
     </section>
 
     <section id="about" class="section">
@@ -764,44 +814,45 @@
 
             <div class="about-content">
                 <div class="about-img">
-                    <img src="https://lh3.googleusercontent.com/a/ACg8ocLhMA4pu_JB0ahfjXXwriJsMSb9fEHc-MMD-VaTCfTLMG0K0GWN=s288-c-no" </div>
-                    <div class="about-text">
-                        <h3 class="ar-text">من أنا؟</h3>
-                        <h3 class="en-text" style="display: none;">Who am I?</h3>
+                    <img src="images/rd.PNG" alt="رياض جعفر جبار">
+                </div>
+                <div class="about-text">
+                    <h3 class="ar-text">من أنا؟</h3>
+                    <h3 class="en-text" style="display: none;">Who am I?</h3>
 
-                        <p class="ar-text">
-                            أنا رياض جعفر جبار، مهندس إلكترونيك متخصص في الأنظمة المدمجة من الجزائر. حاصل على شهادة الهندسة في الإلكترونيك من جامعة وهران، وأعمل في هذا المجال منذ أكثر من 5 سنوات.
-                        </p>
-                        <p class="en-text" style="display: none;">
-                            I'm Riyad Jaafar Jabbar, an electronics engineer specialized in embedded systems from Algeria. I hold an engineering degree in electronics from the University of Oran and have been working in this field for over 5 years.
-                        </p>
+                    <p class="ar-text">
+                        أنا رياض جعفر جبار، مهندس إلكترونيك متخصص في الأنظمة المدمجة من الجزائر. حاصل على شهادة الهندسة في الإلكترونيك من جامعة وهران، وأعمل في هذا المجال منذ أكثر من 3 سنوات.
+                    </p>
+                    <p class="en-text" style="display: none;">
+                        I'm Riyad Jaafar Jabbar, an electronics engineer specialized in embedded systems from Algeria. I hold an engineering degree in electronics from the University of Oran and have been working in this field for over 3 years.
+                    </p>
 
-                        <p class="ar-text">
-                            لدي شغف كبير بتصميم الأنظمة الذكية وتطوير حلول برمجية فعالة للمتحكمات الدقيقة. أعمل حاليًا كمهندس أنظمة مدمجة في شركة تقنية في الجزائر.
-                        </p>
-                        <p class="en-text" style="display: none;">
-                            I have a great passion for designing smart systems and developing efficient software solutions for microcontrollers. I currently work as an embedded systems engineer at a tech company in Algeria.
-                        </p>
+                    <p class="ar-text">
+                        لدي شغف كبير بتصميم الأنظمة الذكية وتطوير حلول برمجية فعالة للمتحكمات الدقيقة. أعمل حاليًا كمهندس أنظمة مدمجة في شركة تقنية في الجزائر.
+                    </p>
+                    <p class="en-text" style="display: none;">
+                        I have a great passion for designing smart systems and developing efficient software solutions for microcontrollers. I currently work as an embedded systems engineer at a tech company in Algeria.
+                    </p>
 
-                        <div class="info">
-                            <div class="info-item">
-                                <p class="ar-text"><strong>الاسم:</strong> رياض جعفر جبار</p>
-                                <p class="en-text" style="display: none;"><strong>Name:</strong> Riyad Jaafar Jabbar</p>
+                    <div class="info">
+                        <div class="info-item">
+                            <p class="ar-text"><strong>الاسم:</strong> رياض جعفر جبار</p>
+                            <p class="en-text" style="display: none;"><strong>Name:</strong> Riyad Jaafar Jabbar</p>
 
-                                <p class="ar-text"><strong>العمر:</strong> 28 سنة</p>
-                                <p class="en-text" style="display: none;"><strong>Age:</strong> 28 years</p>
-                            </div>
-                            <div class="info-item">
-                                <p class="ar-text"><strong>البريد:</strong> riyad.jaafar@example.com</p>
-                                <p class="en-text" style="display: none;"><strong>Email:</strong> riyad.jaafar@example.com</p>
+                            <p class="ar-text"><strong>العمر:</strong> 26 سنة</p>
+                            <p class="en-text" style="display: none;"><strong>Age:</strong> 26 years</p>
+                        </div>
+                        <div class="info-item">
+                            <p class="ar-text"><strong>البريد:</strong> riyad.jaafar@example.com</p>
+                            <p class="en-text" style="display: none;"><strong>Email:</strong> riyad.jaafar@example.com</p>
 
-                                <p class="ar-text"><strong>الخبرة:</strong> 5+ سنوات</p>
-                                <p class="en-text" style="display: none;"><strong>Experience:</strong> 5+ years</p>
-                            </div>
+                            <p class="ar-text"><strong>الخبرة:</strong> 3+ سنوات</p>
+                            <p class="en-text" style="display: none;"><strong>Experience:</strong> 3+ years</p>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 
     <section id="skills" class="section">
@@ -1172,19 +1223,6 @@
                         <a href="mesfiles/projects_samples.zip" download class="file-download en-text" style="display: none;">Download</a>
                     </div>
                 </div>
-
-                <!-- قسم الرفع (لإدارة الموقع) -->
-                <div class="upload-section">
-                    <h3 class="ar-text">رفع ملف جديد</h3>
-                    <h3 class="en-text" style="display: none;">Upload New File</h3>
-
-                    <input type="file" id="fileInput">
-                    <label for="fileInput" class="upload-btn ar-text">اختر ملف</label>
-                    <label for="fileInput" class="upload-btn en-text" style="display: none;">Choose File</label>
-
-                    <button id="uploadBtn" class="btn ar-text" style="margin-left: 1rem;">رفع الملف</button>
-                    <button id="uploadBtn" class="btn en-text" style="margin-left: 1rem; display: none;">Upload File</button>
-                </div>
             </div>
         </section>
     </footer>
@@ -1275,49 +1313,62 @@
         }
         // ملفاتي - JavaScript
         document.addEventListener('DOMContentLoaded', function() {
-            const fileInput = document.getElementById('fileInput');
-            const uploadBtn = document.getElementById('uploadBtn');
-
-            if (uploadBtn) {
-                uploadBtn.addEventListener('click', function() {
-                    if (fileInput.files.length > 0) {
-                        const file = fileInput.files[0];
-                        const formData = new FormData();
-                        formData.append('file', file);
-
-                        // هنا يجب إضافة كود الإرسال إلى الخادم
-                        fetch('/upload', {
-                                method: 'POST',
-                                body: formData
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                const isArabic = document.querySelector('.ar-text').style.display !== 'none';
-                                alert(isArabic ?
-                                    'تم رفع الملف بنجاح: ' + data.filename :
-                                    'File uploaded successfully: ' + data.filename);
-                            })
-                            .catch(error => {
-                                console.error('Error:', error);
-                                const isArabic = document.querySelector('.ar-text').style.display !== 'none';
-                                alert(isArabic ?
-                                    'حدث خطأ أثناء رفع الملف' :
-                                    'Error uploading file');
-                            });
-                    } else {
-                        const isArabic = document.querySelector('.ar-text').style.display !== 'none';
-                        alert(isArabic ?
-                            'الرجاء اختيار ملف أولاً' :
-                            'Please select a file first');
-                    }
-                });
-            }
-
             // تحديث رابط التنقل في الهيدر
             const navLinks = document.querySelector('.links');
             const filesNavItem = document.createElement('li');
             filesNavItem.innerHTML = '<a href="#files" class="ar-text">ملفاتي</a><a href="#files" class="en-text" style="display: none;">My Files</a>';
             navLinks.insertBefore(filesNavItem, navLinks.children[4]); // إدراج قبل "اتصل بي"
+        });
+        // في نهاية ملف script.js
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('themeToggle');
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+            // تحميل الوضع المحفوظ أو استخدام تفضيلات النظام
+            const currentTheme = localStorage.getItem('theme') ||
+                (prefersDarkScheme.matches ? 'dark' : 'light');
+
+            if (currentTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                updateThemeButton('dark');
+            }
+
+            // تبديل الوضع عند النقر
+            themeToggle.addEventListener('click', function() {
+                const isDark = document.body.classList.toggle('dark-mode');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                updateThemeButton(isDark ? 'dark' : 'light');
+            });
+
+            // تحديث زر التبديل
+            function updateThemeButton(theme) {
+                const icon = themeToggle.querySelector('i');
+                const arText = themeToggle.querySelector('.ar-text');
+                const enText = themeToggle.querySelector('.en-text');
+
+                if (theme === 'dark') {
+                    icon.classList.replace('fa-moon', 'fa-sun');
+                    arText.textContent = 'الوضع النهاري';
+                    enText.textContent = 'Light Mode';
+                } else {
+                    icon.classList.replace('fa-sun', 'fa-moon');
+                    arText.textContent = 'الوضع الليلي';
+                    enText.textContent = 'Dark Mode';
+                }
+
+                // تحديث النص المعروض حسب اللغة الحالية
+                const isArabic = document.querySelector('.ar-text').style.display !== 'none';
+                arText.style.display = isArabic ? 'inline' : 'none';
+                enText.style.display = isArabic ? 'none' : 'inline';
+            }
+
+            // مراقبة تغييرات تفضيلات النظام
+            prefersDarkScheme.addEventListener('change', e => {
+                if (!localStorage.getItem('theme')) {
+                    document.body.classList.toggle('dark-mode', e.matches);
+                    updateThemeButton(e.matches ? 'dark' : 'light');
+                }
+            });
         });
     </script>
 </body>
