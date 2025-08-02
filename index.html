@@ -39,6 +39,40 @@
             /* رمادي داكن */
         }
     }
+    /* إضافة تأثيرات حركية متقدمة */
+    .project-card,
+    .blog-card,
+    .file-card {
+        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        transform: translateY(0);
+    }
+    .project-card:hover,
+    .blog-card:hover,
+    .file-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15), 0 10px 10px rgba(0, 0, 0, 0.12);
+    }
+    /* تحسين تأثيرات التحميل */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .section {
+        animation: fadeInUp 0.8s ease forwards;
+    }
+    /* تأثيرات خاصة للوضع الليلي */
+    .dark-theme .project-card:hover,
+    .dark-theme .blog-card:hover,
+    .dark-theme .file-card:hover {
+        box-shadow: 0 14px 28px rgba(255, 255, 255, 0.05), 0 10px 10px rgba(255, 255, 255, 0.02);
+    }
     /* أنماط خلفية RGB المتحركة */
     .rgb-background {
         position: fixed;
@@ -398,6 +432,73 @@
     .dark-mode .blog-content h3 {
         color: var(--heading-color);
         /* أبيض في الوضع الليلي */
+    }
+    .lang-switcher button {
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-weight: 500;
+        padding: 5px 10px;
+        transition: all 0.3s;
+    }
+    .lang-switcher button.active {
+        color: var(--primary-color);
+        font-weight: bold;
+    }
+    .lang-switcher span {
+        color: white;
+        margin: 0 5px;
+    }
+    /* أنماط الوضع الليلي */
+    .dark-theme {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+    .dark-theme header {
+        background-color: #1e1e1e;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    .dark-theme .logo,
+    .dark-theme .links li a,
+    .dark-theme .section-title,
+    .dark-theme h1,
+    .dark-theme h2,
+    .dark-theme h3 {
+        color: #f5f5f5;
+    }
+    .dark-theme .links li a:hover {
+        color: #64b5f6;
+    }
+    .dark-theme .btn {
+        background-color: #64b5f6;
+        color: #121212;
+    }
+    .dark-theme .btn:hover {
+        background-color: #42a5f5;
+    }
+    .dark-theme .btn-outline {
+        background-color: transparent;
+        color: #64b5f6;
+        border-color: #64b5f6;
+    }
+    .dark-theme .btn-outline:hover {
+        background-color: rgba(100, 181, 246, 0.1);
+    }
+    .dark-theme .project-card,
+    .dark-theme .blog-card,
+    .dark-theme .file-card {
+        background-color: #1e1e1e;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .dark-theme .contact-form input,
+    .dark-theme .contact-form textarea {
+        background-color: #2d2d2d;
+        color: #e0e0e0;
+        border-color: #444;
+    }
+    .dark-theme .skill-bar {
+        background-color: #444;
     }
     /* Sections */
     .section {
@@ -1124,46 +1225,35 @@ body.dark-mode .timeline-content h3 {
             <a href="#" class="logo"><span>رياض</span> جعفر جبار</a>
 
             <ul class="links">
-                <li class="active"><a href="#home">الرئيسية</a></li>
-                <li><a href="#about">عنّي</a></li>
-                <li><a href="#skills">المهارات</a></li>
-                <li><a href="#projects">المشاريع</a></li>
-                <li><a href="#contact">اتصل بي</a></li>
+                <li><a href="#home" class="nav-link">الرئيسية</a></li>
+                <li><a href="#about" class="nav-link">عنّي</a></li>
+                <li><a href="#skills" class="nav-link">المهارات</a></li>
+                <li><a href="#projects" class="nav-link">المشاريع</a></li>
+                <li><a href="#files" class="nav-link">ملفاتي</a></li>
+                <li><a href="#contact" class="nav-link">اتصل بي</a></li>
             </ul>
 
             <div class="lang-switcher">
-                <button onclick="switchLanguage('ar')" class="active">العربية</button>
+                <button class="active">العربية</button>
                 <span>|</span>
-                <button onclick="switchLanguage('en')">English</button>
+                <button>English</button>
             </div>
 
-            <div class="theme-switcher">
-                <button id="themeToggle">
-                <i class="fas fa-moon"></i>
-                <span class="ar-text">الوضع الليلي</span>
-                <span class="en-text">Dark Mode</span>
-            </button>
+            <button id="themeToggle">
+    <i class="fas fa-moon"></i>
+    <span class="ar-text">الوضع الليلي</span>
+    <span class="en-text" style="display: none;">Dark Mode</span>
+</button>
             </div>
 
             <div class="social-links">
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/yourhandle" target="_blank"><i class="fab fa-twitter"></i></a>
             </div>
 
             <i id="btnMenu" class="fas fa-bars"></i>
         </nav>
-    </header>
-    </div>
-    <div class="social-links">
-        <a href="https://www.linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://twitter.com/yourhandle" target="_blank"><i class="fab fa-twitter"></i></a>
-    </div>
-
-    <i id="btnMenu" class="fas fa-bars"></i>
-
-    </nav>
     </header>
 
     <section id="home" class="hero-sec">
@@ -1189,8 +1279,7 @@ body.dark-mode .timeline-content h3 {
                     <a href="#contact" class="btn btn-outline en-text" style="display: none;">Contact Me</a>
                 </div>
             </div>
-
-
+        </div>
     </section>
 
     <section id="about" class="section">
@@ -1207,12 +1296,12 @@ body.dark-mode .timeline-content h3 {
                     <h3 class="en-text" style="display: none;">Who am I?</h3>
 
                     <p class="ar-text">
-                        أنا رياض جعفر جبار، مهندس إلكترونيك جزائري متخصص في الأنظمة المدمجة، حاصل على شهادة ماستر في إلكترونيك الأنظمة المدمجة من جامعة حسيبة بن بوعلي – الشلف. أمتلك خبرة عملية تفوق 3 سنوات في تصميم الأنظمة الصناعية، برمجة المتحكمات، وإنجاز لوحات التحكم والاختبار.
+                        أنا رياض جعفر جبار، مهندس إلكترونيك جزائري متخصص في الأنظمة المدمجة، حاصل على شهادة ماستر في إلكترونيك الأنظمة المدمجة من جامعة حسيبة بن بوعلي - الشلف. أمتلك خبرة عملية تفوق 3 سنوات في تصميم الأنظمة الصناعية، برمجة المتحكمات، وإنجاز لوحات التحكم والاختبار.
                         أسعى دائماً لتطوير خبرتي التقنية والمساهمة في مشاريع صناعية مبتكرة تعتمد على حلول ذكية وفعّالة.
                     </p>
                     <p class="en-text" style="display: none;">
-                        I am Riyadh Djaafeur Djebbar, an Algerian Electronics Engineer specialized in Embedded Systems, holding a Master’s degree in Electronics of Embedded Systems from Hassiba Ben Bouali University – Chlef. I have over 3 years of hands-on experience in industrial
-                        systems design, microcontroller programming, and developing and testing control panels. I am constantly striving to enhance my technical expertise and contribute to innovative industrial projects based on smart and efficient solutions
+                        I am Riyadh Djaafeur Djebbar, an Algerian Electronics Engineer specialized in Embedded Systems, holding a Master's degree in Electronics of Embedded Systems from Hassiba Ben Bouali University - Chlef. I have over 3 years of hands-on experience in industrial
+                        systems design, microcontroller programming, and developing and testing control panels. I am constantly striving to enhance my technical expertise and contribute to innovative industrial projects based on smart and efficient solutions.
                     </p>
 
                     <p class="ar-text">
@@ -1231,7 +1320,7 @@ body.dark-mode .timeline-content h3 {
                             <p class="en-text" style="display: none;"><strong>Age:</strong> 26 years</p>
                         </div>
                         <div class="info-item">
-                            <p class="ar-text"><strong>البريد:</strong>riyadhdjaafeurdjebbar@gmail.com</p>
+                            <p class="ar-text"><strong>البريد:</strong> riyadhdjaafeurdjebbar@gmail.com</p>
                             <p class="en-text" style="display: none;"><strong>Email:</strong> riyad.jaafar@example.com</p>
 
                             <p class="ar-text"><strong>الخبرة:</strong> 3+ سنوات</p>
@@ -1473,7 +1562,7 @@ body.dark-mode .timeline-content h3 {
             </div>
         </div>
     </section>
-    <!-- بعد قسم المشاريع وقبل قسم الاتصال -->
+
     <section id="blog" class="section">
         <div class="container">
             <h2 class="section-title ar-text">مقالاتي التقنية</h2>
@@ -1482,7 +1571,7 @@ body.dark-mode .timeline-content h3 {
             <div class="blog-grid">
                 <div class="blog-card">
                     <div class="blog-img">
-                        <img src="images/embedded-systems.jpg" alt="الأنظمة المدمجة">
+                        <img src="images/embedded-systems.png" alt="الأنظمة المدمجة">
                     </div>
                     <div class="blog-content">
                         <span class="blog-date ar-text">15 يونيو 2023</span>
@@ -1501,7 +1590,7 @@ body.dark-mode .timeline-content h3 {
 
                 <div class="blog-card">
                     <div class="blog-img">
-                        <img src="images/iot-security.jpg" alt="أمن إنترنت الأشياء">
+                        <img src="images/iot-security.png" alt="أمن إنترنت الأشياء">
                     </div>
                     <div class="blog-content">
                         <span class="blog-date ar-text">2 أغسطس 2023</span>
@@ -1520,6 +1609,55 @@ body.dark-mode .timeline-content h3 {
             </div>
         </div>
     </section>
+
+    <section id="files" class="my-files section">
+        <div class="container">
+            <h2 class="section-title ar-text">ملفاتي</h2>
+            <h2 class="section-title en-text" style="display: none;">My Files</h2>
+
+            <p class="ar-text">هنا يمكنك تحميل السيرة الذاتية والملفات الأخرى الخاصة بي</p>
+            <p class="en-text" style="display: none;">Here you can download my CV and other files</p>
+
+            <div class="files-container">
+                <div class="file-card">
+                    <div class="file-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 class="file-name ar-text">السيرة الذاتية</h3>
+                    <h3 class="file-name en-text" style="display: none;">Curriculum Vitae</h3>
+                    <p class="ar-text">آخر تحديث: مايو 2023</p>
+                    <p class="en-text" style="display: none;">Last update: May 2023</p>
+                    <a href="mesfiles/cv.pdf" download class="file-download ar-text">تحميل</a>
+                    <a href="mesfiles/cv.pdf" download class="file-download en-text" style="display: none;">Download</a>
+                </div>
+
+                <div class="file-card">
+                    <div class="file-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="file-name ar-text">شهاداتي</h3>
+                    <h3 class="file-name en-text" style="display: none;">Certificates</h3>
+                    <p class="ar-text">مجموعة من الشهادات</p>
+                    <p class="en-text" style="display: none;">Collection of certificates</p>
+                    <a href="mesfiles/certificates.zip" download class="file-download ar-text">تحميل</a>
+                    <a href="mesfiles/certificates.zip" download class="file-download en-text" style="display: none;">Download</a>
+                </div>
+
+                <div class="file-card">
+                    <div class="file-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3 class="file-name ar-text">نماذج المشاريع</h3>
+                    <h3 class="file-name en-text" style="display: none;">Projects Samples</h3>
+                    <p class="ar-text">أمثلة من أعمالي</p>
+                    <p class="en-text" style="display: none;">Samples of my work</p>
+                    <a href="mesfiles/projects_samples.zip" download class="file-download ar-text">تحميل</a>
+                    <a href="mesfiles/projects_samples.zip" download class="file-download en-text" style="display: none;">Download</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title ar-text">اتصل بي</h2>
@@ -1609,469 +1747,335 @@ body.dark-mode .timeline-content h3 {
             <p class="ar-text">جميع الحقوق محفوظة &copy; <span id="year"></span> رياض جعفر جبار</p>
             <p class="en-text" style="display: none;">All Rights Reserved &copy; <span id="year-en"></span> Riyad DJaafar DJabbar</p>
         </div>
-        <section id="files" class="my-files section">
-            <div class="container">
-                <h2 class="section-title ar-text">ملفاتي</h2>
-                <h2 class="section-title en-text" style="display: none;">My Files</h2>
-
-                <p class="ar-text">هنا يمكنك تحميل السيرة الذاتية والملفات الأخرى الخاصة بي</p>
-                <p class="en-text" style="display: none;">Here you can download my CV and other files</p>
-
-                <div class="files-container">
-                    <!-- ملف السيرة الذاتية -->
-                    <div class="file-card">
-                        <div class="file-icon">
-                            <i class="fas fa-file-pdf"></i>
-                        </div>
-                        <h3 class="file-name ar-text">السيرة الذاتية</h3>
-                        <h3 class="file-name en-text" style="display: none;">Curriculum Vitae</h3>
-                        <p class="ar-text">آخر تحديث: مايو 2023</p>
-                        <p class="en-text" style="display: none;">Last update: May 2023</p>
-                        <a href="mesfiles/cv.pdf" download class="file-download ar-text">تحميل</a>
-                        <a href="mesfiles/cv.pdf" download class="file-download en-text" style="display: none;">Download</a>
-                    </div>
-
-                    <!-- شهادات -->
-                    <div class="file-card">
-                        <div class="file-icon">
-                            <i class="fas fa-certificate"></i>
-                        </div>
-                        <h3 class="file-name ar-text">شهاداتي</h3>
-                        <h3 class="file-name en-text" style="display: none;">Certificates</h3>
-                        <p class="ar-text">مجموعة من الشهادات</p>
-                        <p class="en-text" style="display: none;">Collection of certificates</p>
-                        <a href="mesfiles/certificates.zip" download class="file-download ar-text">تحميل</a>
-                        <a href="mesfiles/certificates.zip" download class="file-download en-text" style="display: none;">Download</a>
-                    </div>
-
-                    <!-- مشاريع -->
-                    <div class="file-card">
-                        <div class="file-icon">
-                            <i class="fas fa-project-diagram"></i>
-                        </div>
-                        <h3 class="file-name ar-text">نماذج المشاريع</h3>
-                        <h3 class="file-name en-text" style="display: none;">Projects Samples</h3>
-                        <p class="ar-text">أمثلة من أعمالي</p>
-                        <p class="en-text" style="display: none;">Samples of my work</p>
-                        <a href="mesfiles/projects_samples.zip" download class="file-download ar-text">تحميل</a>
-                        <a href="mesfiles/projects_samples.zip" download class="file-download en-text" style="display: none;">Download</a>
-                    </div>
-                </div>
-            </div>
-        </section>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // ============ Mobile Menu Toggle ============
-            const btnMenu = document.getElementById("btnMenu");
-            const NavLinks = document.querySelector(".links");
-            const navbar = document.querySelector("header");
-
-            // Initialize navbar scroll behavior
-            let lastScrollTop = 0;
-
-            // 1. Mobile menu toggle function
-            function toggleMobileMenu() {
-                if (btnMenu && NavLinks) {
-                    btnMenu.classList.toggle("fa-times");
-                    NavLinks.classList.toggle("active");
-
-                    // Toggle body overflow when menu is open
-                    document.body.style.overflow = NavLinks.classList.contains("active") ? 'hidden' : 'auto';
-                }
-            }
-
-            // 2. Close mobile menu when clicking on links
-            function closeMobileMenu() {
-                if (btnMenu && NavLinks) {
-                    btnMenu.classList.remove("fa-times");
-                    NavLinks.classList.remove("active");
-                    document.body.style.overflow = 'auto';
-                }
-            }
-
-            // 3. Navbar scroll behavior
-            function handleScroll() {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-                if (scrollTop > lastScrollTop) {
-                    // Scrolling down
-                    if (navbar) navbar.style.top = '-80px';
-                } else {
-                    // Scrolling up
-                    if (navbar) navbar.style.top = '0';
-                }
-
-                lastScrollTop = scrollTop;
-
-                // Add shadow when scrolled
-                if (navbar) {
-                    navbar.style.boxShadow = scrollTop > 50 ? '0 2px 10px rgba(0, 0, 0, 0.1)' : 'none';
-                }
-            }
-
-            // Initialize navbar functionality
-            if (btnMenu) {
-                btnMenu.addEventListener('click', toggleMobileMenu);
-            }
-
-            // Close menu when clicking on nav links
-            document.querySelectorAll('.links a').forEach(link => {
-                link.addEventListener('click', closeMobileMenu);
-            });
-
-            // Set up scroll event listener
-            window.addEventListener('scroll', handleScroll);
-
-            // ============ Language Switching ============
+            // ============ Language Switching System ============
             function switchLanguage(lang) {
                 const arElements = document.querySelectorAll('.ar-text');
                 const enElements = document.querySelectorAll('.en-text');
                 const langButtons = document.querySelectorAll('.lang-switcher button');
 
+                const translations = {
+                    home: {
+                        ar: 'الرئيسية',
+                        en: 'Home'
+                    },
+                    about: {
+                        ar: 'عنّي',
+                        en: 'About'
+                    },
+                    skills: {
+                        ar: 'المهارات',
+                        en: 'Skills'
+                    },
+                    projects: {
+                        ar: 'المشاريع',
+                        en: 'Projects'
+                    },
+                    contact: {
+                        ar: 'اتصل بي',
+                        en: 'Contact'
+                    },
+                    files: {
+                        ar: 'ملفاتي',
+                        en: 'My Files'
+                    }
+                };
+
                 if (lang === 'ar') {
                     document.body.setAttribute('dir', 'rtl');
-                    arElements.forEach(el => el.style.display = 'block');
+                    document.documentElement.setAttribute('lang', 'ar');
+
+                    arElements.forEach(el => el.style.display = '');
                     enElements.forEach(el => el.style.display = 'none');
-                    if (langButtons[0]) langButtons[0].classList.add('active');
-                    if (langButtons[1]) langButtons[1].classList.remove('active');
+
+                    Object.entries(translations).forEach(([id, trans]) => {
+                        const link = document.querySelector(`.links a[href="#${id}"]`);
+                        if (link) link.textContent = trans.ar;
+                    });
+
+                    langButtons[0].classList.add('active');
+                    langButtons[1].classList.remove('active');
                 } else {
                     document.body.setAttribute('dir', 'ltr');
+                    document.documentElement.setAttribute('lang', 'en');
+
                     arElements.forEach(el => el.style.display = 'none');
-                    enElements.forEach(el => el.style.display = 'block');
-                    if (langButtons[0]) langButtons[0].classList.remove('active');
-                    if (langButtons[1]) langButtons[1].classList.add('active');
+                    enElements.forEach(el => el.style.display = '');
+
+                    Object.entries(translations).forEach(([id, trans]) => {
+                        const link = document.querySelector(`.links a[href="#${id}"]`);
+                        if (link) link.textContent = trans.en;
+                    });
+
+                    langButtons[0].classList.remove('active');
+                    langButtons[1].classList.add('active');
                 }
 
-                closeMobileMenu();
+                // Close mobile menu if open
+                const mobileMenu = document.querySelector('.links.active');
+                if (mobileMenu) {
+                    mobileMenu.classList.remove('active');
+                    document.getElementById('btnMenu').classList.remove('fa-times');
+                    document.body.style.overflow = 'auto';
+                }
+
+                localStorage.setItem('selectedLanguage', lang);
             }
 
-            // Initialize language based on initial body direction
-            switchLanguage(document.body.getAttribute('dir') === 'rtl' ? 'ar' : 'en');
+            // Initialize language
+            const savedLang = localStorage.getItem('selectedLanguage') ||
+                (navigator.language.startsWith('ar') ? 'ar' : 'en');
+            switchLanguage(savedLang);
 
-            // ============ Smooth Scrolling ============
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
+            // Set up language buttons
+            document.querySelectorAll('.lang-switcher button').forEach((btn, index) => {
+                btn.addEventListener('click', () => switchLanguage(index === 0 ? 'ar' : 'en'));
+            });
 
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                        closeMobileMenu();
+            // ============ Dark Mode System ============
+            const themeToggle = document.getElementById('themeToggle');
+            const moonIcon = themeToggle.querySelector('.fa-moon');
+
+            // Create sun icon
+            const sunIcon = document.createElement('i');
+            sunIcon.className = 'fas fa-sun';
+            sunIcon.style.display = 'none';
+            themeToggle.insertBefore(sunIcon, moonIcon.nextSibling);
+
+            // Check saved preference
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (savedTheme === 'system' && prefersDark)) {
+                enableDarkMode();
+            }
+
+            // Respond to system preference changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                if (localStorage.getItem('theme') === 'system') {
+                    e.matches ? enableDarkMode() : disableDarkMode();
+                }
+            });
+
+            themeToggle.addEventListener('click', function() {
+                if (document.body.classList.contains('dark-theme')) {
+                    disableDarkMode();
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    enableDarkMode();
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+
+            function enableDarkMode() {
+                document.body.classList.add('dark-theme');
+                document.documentElement.setAttribute('data-theme', 'dark');
+                moonIcon.style.display = 'none';
+                sunIcon.style.display = 'inline-block';
+                updateThemeText('dark');
+            }
+
+            function disableDarkMode() {
+                document.body.classList.remove('dark-theme');
+                document.documentElement.setAttribute('data-theme', 'light');
+                moonIcon.style.display = 'inline-block';
+                sunIcon.style.display = 'none';
+                updateThemeText('light');
+            }
+
+            function updateThemeText(mode) {
+                const arTexts = document.querySelectorAll('.ar-text');
+                const enTexts = document.querySelectorAll('.en-text');
+
+                arTexts.forEach(el => {
+                    if (el.textContent.includes('الوضع الليلي') || el.textContent.includes('الوضع النهاري')) {
+                        el.textContent = mode === 'dark' ? 'الوضع النهاري' : 'الوضع الليلي';
+                    }
+                });
+
+                enTexts.forEach(el => {
+                    if (el.textContent.includes('Dark Mode') || el.textContent.includes('Light Mode')) {
+                        el.textContent = mode === 'dark' ? 'Light Mode' : 'Dark Mode';
+                    }
+                });
+            }
+
+            // ============ Mobile Menu ============
+            document.getElementById('btnMenu').addEventListener('click', function() {
+                const menu = document.querySelector('.links');
+                this.classList.toggle('fa-times');
+                menu.classList.toggle('active');
+                document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
+            });
+
+            // Close menu when clicking on links
+            document.querySelectorAll('.links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    const menu = document.querySelector('.links');
+                    if (menu.classList.contains('active')) {
+                        menu.classList.remove('active');
+                        document.getElementById('btnMenu').classList.remove('fa-times');
+                        document.body.style.overflow = 'auto';
                     }
                 });
             });
 
-            // ============ Update Footer Year ============
-            const currentYear = new Date().getFullYear();
-            const yearElement = document.getElementById('year');
-            const yearEnElement = document.getElementById('year-en');
-
-            if (yearElement) yearElement.textContent = currentYear;
-            if (yearEnElement) yearEnElement.textContent = currentYear;
-
-            // ============ Form Submission ============
-            const contactForm = document.querySelector('.contact-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const isArabic = document.querySelector('.ar-text').style.display !== 'none';
-                    alert(isArabic ?
-                        'تم إرسال رسالتك بنجاح! سأتواصل معك قريبًا.' :
-                        'Your message has been sent successfully! I will contact you soon.');
-                    this.reset();
-                });
-            }
-
-            // ============ Dark Mode Toggle ============
-            const themeToggle = document.getElementById('themeToggle');
-            if (themeToggle) {
-                const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-                const currentTheme = localStorage.getItem('theme') ||
-                    (prefersDarkScheme.matches ? 'dark' : 'light');
-
-                // Apply saved theme
-                if (currentTheme === 'dark') {
-                    document.body.classList.add('dark-mode');
-                }
-
-                // Update button state
-                updateThemeButton(currentTheme);
-
-                // Toggle theme on button click
-                themeToggle.addEventListener('click', function() {
-                    const isDark = document.body.classList.toggle('dark-mode');
-                    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-                    updateThemeButton(isDark ? 'dark' : 'light');
-                });
-
-                // Watch for system theme changes
-                prefersDarkScheme.addEventListener('change', e => {
-                    if (!localStorage.getItem('theme')) {
-                        const newTheme = e.matches ? 'dark' : 'light';
-                        document.body.classList.toggle('dark-mode', e.matches);
-                        updateThemeButton(newTheme);
-                    }
-                });
-
-                function updateThemeButton(theme) {
-                    const icon = themeToggle.querySelector('i');
-                    const arText = themeToggle.querySelector('.ar-text');
-                    const enText = themeToggle.querySelector('.en-text');
-                    const isArabic = document.querySelector('.ar-text').style.display !== 'none';
-
-                    if (theme === 'dark') {
-                        if (icon) icon.classList.replace('fa-moon', 'fa-sun');
-                        if (arText) {
-                            arText.textContent = 'الوضع النهاري';
-                            arText.style.display = isArabic ? 'inline' : 'none';
-                        }
-                        if (enText) {
-                            enText.textContent = 'Light Mode';
-                            enText.style.display = isArabic ? 'none' : 'inline';
-                        }
-                    } else {
-                        if (icon) icon.classList.replace('fa-sun', 'fa-moon');
-                        if (arText) {
-                            arText.textContent = 'الوضع الليلي';
-                            arText.style.display = isArabic ? 'inline' : 'none';
-                        }
-                        if (enText) {
-                            enText.textContent = 'Dark Mode';
-                            enText.style.display = isArabic ? 'none' : 'inline';
-                        }
-                    }
-                }
-            }
-
-            // ============ Image Handling ============
-            // 1. Lazy Loading Images
-            const lazyLoadImages = () => {
-                const lazyImages = document.querySelectorAll('img[data-src], [data-bg]');
-                const imageObserver = new IntersectionObserver((entries, observer) => {
+            // ============ Lazy Loading Images ============
+            if ('IntersectionObserver' in window) {
+                const lazyImages = document.querySelectorAll('img.lazy-img');
+                const lazyImageObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
-                            const element = entry.target;
+                            const lazyImage = entry.target;
+                            lazyImage.src = lazyImage.dataset.src;
+                            lazyImage.classList.remove('lazy-img');
+                            lazyImageObserver.unobserve(lazyImage);
 
-                            // For regular images
-                            if (element.tagName === 'IMG') {
-                                const src = element.getAttribute('data-src');
-                                if (src) {
-                                    element.src = src;
-                                    element.removeAttribute('data-src');
-                                    element.classList.add('fade-in');
-                                }
-                            }
+                            // Fade-in effect
+                            lazyImage.style.opacity = '0';
+                            lazyImage.style.transition = 'opacity 0.6s ease';
+                            setTimeout(() => {
+                                lazyImage.style.opacity = '1';
+                            }, 100);
+                        }
+                    });
+                });
 
-                            // For background images
-                            if (element.hasAttribute('data-bg')) {
-                                const bgUrl = element.getAttribute('data-bg');
-                                if (bgUrl) {
-                                    element.style.backgroundImage = `url(${bgUrl})`;
-                                    element.removeAttribute('data-bg');
-                                    element.classList.add('bg-fade-in');
-                                }
-                            }
+                lazyImages.forEach(lazyImage => {
+                    lazyImageObserver.observe(lazyImage);
+                });
+            }
 
-                            observer.unobserve(element);
+            // ============ Contact Form ============
+            document.querySelector('.contact-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const form = this;
+                const formData = new FormData(form);
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.textContent;
+
+                // Validation
+                if (!formData.get('name') || !formData.get('email') || !formData.get('message')) {
+                    alert(document.body.getAttribute('dir') === 'rtl' ?
+                        'الرجاء ملء جميع الحقول المطلوبة' : 'Please fill all required fields');
+                    return;
+                }
+
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(formData.get('email'))) {
+                    alert(document.body.getAttribute('dir') === 'rtl' ?
+                        'الرجاء إدخال عنوان بريد إلكتروني صحيح' : 'Please enter a valid email address');
+                    return;
+                }
+
+                // Show loading state
+                submitBtn.disabled = true;
+                submitBtn.textContent = document.body.getAttribute('dir') === 'rtl' ?
+                    'جاري الإرسال...' : 'Sending...';
+
+                // Simulate form submission
+                setTimeout(() => {
+                    submitBtn.textContent = document.body.getAttribute('dir') === 'rtl' ?
+                        'تم الإرسال بنجاح!' : 'Sent Successfully!';
+                    form.reset();
+
+                    setTimeout(() => {
+                        submitBtn.textContent = originalBtnText;
+                        submitBtn.disabled = false;
+                    }, 2000);
+                }, 1500);
+            });
+
+            // ============ Skills Animation ============
+            function animateSkillsOnScroll() {
+                const skillBars = document.querySelectorAll('.skill-level');
+                const skillsSection = document.getElementById('skills');
+
+                if (!skillsSection) return;
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            skillBars.forEach(bar => {
+                                const width = bar.parentElement.previousElementSibling.lastElementChild.textContent;
+                                bar.style.width = '0';
+                                setTimeout(() => {
+                                    bar.style.width = width;
+                                }, 100);
+                            });
+                            observer.unobserve(entry.target);
                         }
                     });
                 }, {
-                    rootMargin: '200px',
+                    threshold: 0.3
+                });
+
+                observer.observe(skillsSection);
+            }
+
+            // ============ Cards Animation ============
+            function animateCardsOnScroll() {
+                const cards = document.querySelectorAll('.project-card, .blog-card, .file-card');
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry, index) => {
+                        if (entry.isIntersecting) {
+                            setTimeout(() => {
+                                entry.target.style.opacity = '1';
+                                entry.target.style.transform = 'translateY(0)';
+                            }, index * 150);
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
                     threshold: 0.1
                 });
 
-                lazyImages.forEach(img => imageObserver.observe(img));
-            };
-
-            // 2. Image hover effects
-            const initImageHoverEffects = () => {
-                const imageContainers = document.querySelectorAll('.div-img, .about-img, .project-img');
-
-                imageContainers.forEach(container => {
-                    const img = container.querySelector('img');
-                    if (!img) return;
-
-                    container.addEventListener('mouseenter', () => {
-                        img.style.transform = 'scale(1.05)';
-                        img.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
-                    });
-
-                    container.addEventListener('mouseleave', () => {
-                        img.style.transform = 'scale(1)';
-                    });
-
-                    container.addEventListener('mousedown', () => {
-                        img.style.filter = 'brightness(0.8)';
-                    });
-
-                    container.addEventListener('mouseup', () => {
-                        img.style.filter = 'brightness(1)';
-                    });
+                cards.forEach(card => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(30px)';
+                    card.style.transition = 'all 0.6s ease-out';
+                    observer.observe(card);
                 });
-            };
+            }
 
-            // 3. Lightbox functionality
-            const initLightbox = () => {
-                document.querySelectorAll('.div-img img, .about-img img, .project-img img').forEach(img => {
-                    img.addEventListener('click', function() {
-                        const lightbox = document.createElement('div');
-                        lightbox.id = 'image-lightbox';
-                        lightbox.innerHTML = `
-                    <div class="lightbox-content">
-                        <span class="close-btn">&times;</span>
-                        <img src="${this.src}" alt="${this.alt || ''}">
-                        <div class="image-caption">${this.alt || ''}</div>
-                    </div>
-                `;
+            // ============ Initialize Animations ============
+            animateSkillsOnScroll();
+            animateCardsOnScroll();
 
-                        document.body.appendChild(lightbox);
+            // ============ Update Copyright Year ============
+            document.getElementById('year').textContent = new Date().getFullYear();
+            document.getElementById('year-en').textContent = new Date().getFullYear();
 
-                        // Close lightbox
-                        lightbox.querySelector('.close-btn').addEventListener('click', () => {
-                            lightbox.style.opacity = '0';
-                            setTimeout(() => lightbox.remove(), 300);
-                        });
-
-                        lightbox.addEventListener('click', (e) => {
-                            if (e.target === lightbox) {
-                                lightbox.style.opacity = '0';
-                                setTimeout(() => lightbox.remove(), 300);
-                            }
-                        });
-                    });
-                });
-            };
-
-            // 4. Load critical images
-            const loadCriticalImages = () => {
-                const criticalImages = [
-                    'images/rd.jpg',
-                    'images/hero-bg.jpg'
+            // ============ Performance Optimizations ============
+            // Delay non-critical resources
+            setTimeout(() => {
+                const nonCriticalResources = [
+                    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css',
+                    'https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap'
                 ];
 
-                criticalImages.forEach(src => {
-                    const img = new Image();
-                    img.src = src;
+                nonCriticalResources.forEach(resource => {
+                    const link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.href = resource;
+                    document.head.appendChild(link);
                 });
-            };
+            }, 2000);
 
-            // Initialize all image functions
-            lazyLoadImages();
-            initImageHoverEffects();
-            initLightbox();
-            loadCriticalImages();
-
-            // ============ Add My Files Link to Nav ============
-            const addFilesNavItem = () => {
-                const navLinks = document.querySelector('.links');
-                if (!navLinks) return;
-
-                const filesNavItem = document.createElement('li');
-                filesNavItem.innerHTML = `
-            <a href="#files" class="ar-text">ملفاتي</a>
-            <a href="#files" class="en-text" style="display: none;">My Files</a>
-        `;
-
-                // Insert before contact link (assuming it's the 5th item)
-                if (navLinks.children.length >= 4) {
-                    navLinks.insertBefore(filesNavItem, navLinks.children[4]);
-                } else {
-                    navLinks.appendChild(filesNavItem);
-                }
-            };
-
-            addFilesNavItem();
-
-            // ============ Scroll Animations ============
-            const initScrollAnimations = () => {
-                // Add CSS for animations
-                const style = document.createElement('style');
-                style.textContent = `
-            .fade-in-section {
-                opacity: 0;
-                transform: translateY(20px);
-                transition: opacity 0.6s ease, transform 0.6s ease;
-            }
-            .fade-in-section.visible {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        `;
-                document.head.appendChild(style);
-
-                // Animate sections on scroll
-                const sections = document.querySelectorAll('.section');
-                const sectionObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                        }
-                    });
-                }, {
-                    threshold: 0.1
-                });
-
-                sections.forEach(section => {
-                    section.classList.add('fade-in-section');
-                    sectionObserver.observe(section);
-                });
-
-                // Update active nav link on scroll
-                const navLinks = document.querySelectorAll('.links a');
-                if (navLinks.length) {
-                    window.addEventListener('scroll', () => {
-                        let current = '';
-                        const scrollPosition = window.scrollY + 200;
-
-                        document.querySelectorAll('section').forEach(section => {
-                            const sectionTop = section.offsetTop;
-                            const sectionHeight = section.clientHeight;
-
-                            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                                current = section.getAttribute('id');
-                            }
-                        });
-
-                        navLinks.forEach(link => {
-                            link.classList.remove('active');
-                            if (link.getAttribute('href') === `#${current}`) {
-                                link.classList.add('active');
-                            }
-                        });
-                    });
-                }
-            };
-
-            initScrollAnimations();
-
-            // ============ RGB Background Effect ============
-            const initRGBBackground = () => {
-                const rgbBackground = document.querySelector('.rgb-background');
-                if (!rgbBackground) return;
-
-                // Mouse movement effect
-                document.addEventListener('mousemove', (e) => {
-                    const x = e.clientX / window.innerWidth;
-                    const y = e.clientY / window.innerHeight;
-
-                    rgbBackground.style.animationDuration = `${10 + (x * 10)}s`;
-                    rgbBackground.style.opacity = `${0.3 + (y * 0.4)}`;
-                });
-
-                // Scroll effect
-                window.addEventListener('scroll', () => {
-                    const scrollPercentage = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-                    rgbBackground.style.backgroundSize = `${150 + (scrollPercentage * 50)}% ${150 + (scrollPercentage * 50)}%`;
-                });
-            };
-
-            initRGBBackground();
+            // Optimize scroll events
+            let isScrolling;
+            window.addEventListener('scroll', function() {
+                clearTimeout(isScrolling);
+                isScrolling = setTimeout(() => {
+                    // Execute after scrolling stops
+                }, 100);
+            }, false);
         });
     </script>
 
