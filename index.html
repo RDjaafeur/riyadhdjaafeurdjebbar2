@@ -10,990 +10,1111 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-     :root {
-            --primary-color: #3498db;
-            --secondary-color: #2c3e50;
-            --accent-color: #e74c3c;
-            --text-color: #333;
-            --light-bg: #f5f5f5;
-            --dark-bg: #2c3e50;
-            --white: #fff;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            transition: all 0.3s ease;
-        }
-        
-        body {
-            font-family: 'Tajawal', 'Roboto', sans-serif;
-            line-height: 1.8;
-            color: var(--text-color);
-            background-color: var(--light-bg);
-        }
-        
-        body[dir="rtl"] {
-            font-family: 'Tajawal', sans-serif;
-        }
-        
-        body[dir="ltr"] {
-            font-family: 'Roboto', sans-serif;
-        }
-        /* Header Styles */
-        
-        header {
-            background-color: var(--dark-bg);
-            color: var(--white);
-            padding: 1rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            text-decoration: none;
-            color: var(--white);
-        }
-        
-        .logo span {
-            color: var(--primary-color);
-        }
-        
-        .links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .links li {
-            margin: 0 1rem;
-        }
-        
-        .links a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 0;
-            position: relative;
-        }
-        
-        .links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary-color);
-            transition: width 0.3s;
-        }
-        
-        .links a:hover::after,
-        .links .active a::after {
-            width: 100%;
-            right: auto;
-            left: 0;
-        }
-        
-        .social-links a {
-            color: var(--white);
-            margin: 0 0.5rem;
-            font-size: 1.2rem;
-        }
-        
-        .social-links a:hover {
-            color: var(--primary-color);
-        }
-        
-        .lang-switcher {
-            margin-right: 1rem;
-        }
-        
-        .lang-switcher button {
-            background: none;
-            border: none;
-            color: var(--white);
-            cursor: pointer;
-            font-weight: 500;
-            opacity: 0.7;
-        }
-        
-        .lang-switcher button.active {
-            opacity: 1;
-            color: var(--primary-color);
-        }
-        
-        #btnMenu {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--white);
-        }
-        /* Hero Section */
-        
-        .hero-sec {
-            padding: 8rem 2rem 4rem;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--primary-color) 100%);
-            color: var(--white);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        
-        .div-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .div-text h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-        
-        .div-text span {
-            display: inline-block;
-            font-size: 1.2rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-weight: 500;
-        }
-        
-        .div-text p {
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 500;
-            margin-right: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .btn:hover {
-            background-color: #2980b9;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            border: 1px solid var(--primary-color);
-        }
-        
-        .div-img {
-            flex: 1;
-            min-width: 300px;
-            text-align: center;
-        }
-        
-        .div-img img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        /* Sections */
-        
-        .section {
-            padding: 5rem 2rem;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--dark-bg);
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            height: 3px;
-            width: 50%;
-            background-color: var(--primary-color);
-        }
-        
-        [dir="rtl"] .section-title::after {
-            right: 0;
-        }
-        
-        [dir="ltr"] .section-title::after {
-            left: 0;
-        }
-        /* About Section */
-        
-        .about-content {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 3rem;
-        }
-        
-        .about-img {
-            flex: 1;
-            min-width: 300px;
-            text-align: center;
-        }
-        
-        .about-img img {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark-bg);
-        }
-        
-        .info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .info-item {
-            flex: 1;
-            min-width: 200px;
-        }
-        
-        .info-item p {
-            margin-bottom: 0.8rem;
-        }
-        
-        .info-item strong {
-            color: var(--dark-bg);
-        }
-        /* Skills Section */
-        
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        
-        .skill-category {
-            flex: 1;
-            min-width: 300px;
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .skill-category h3 {
-            color: var(--dark-bg);
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--primary-color);
-        }
-        
-        .skill-item {
-            margin-bottom: 1.5rem;
-        }
-        
-        .skill-name {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-        }
-        
-        .skill-bar {
-            height: 8px;
-            background: #eee;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        
-        .skill-level {
-            height: 100%;
-            background: var(--primary-color);
-        }
-        /* Projects Section */
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-        
-        .project-card {
-            background: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .project-img {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .project-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .project-card:hover .project-img img {
-            transform: scale(1.1);
-        }
-        
-        .project-info {
-            padding: 1.5rem;
-        }
-        
-        .project-info h3 {
-            color: var(--dark-bg);
-            margin-bottom: 1rem;
-        }
-        
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 1rem 0;
-        }
-        
-        .project-tech span {
-            background: #f0f0f0;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: var(--dark-bg);
-        }
-        /* Contact Section */
-        
-        .contact-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 3rem;
-        }
-        
-        .contact-info {
-            flex: 1;
-            min-width: 300px;
-            background: var(--dark-bg);
-            color: var(--white);
-            padding: 2rem;
-            border-radius: 10px;
-        }
-        
-        .contact-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--white);
-        }
-        
-        .contact-info p {
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-        
-        [dir="rtl"] .contact-item i {
-            margin-left: 1rem;
-        }
-        
-        [dir="ltr"] .contact-item i {
-            margin-right: 1rem;
-        }
-        
-        .contact-item i {
-            color: var(--primary-color);
-            font-size: 1.2rem;
-        }
-        
-        .contact-social {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .contact-social a {
-            color: var(--white);
-            font-size: 1.3rem;
-        }
-        
-        .contact-social a:hover {
-            color: var(--primary-color);
-        }
-        
-        .contact-form {
-            flex: 1;
-            min-width: 300px;
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--dark-bg);
-            font-weight: 500;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: inherit;
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-        /* Footer */
-        
-        footer {
-            background: var(--dark-bg);
-            color: var(--white);
-            text-align: center;
-            padding: 2rem;
-        }
-        
-        footer p {
-            margin-bottom: 1rem;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .footer-links a {
-            color: var(--white);
-            text-decoration: none;
-        }
-        
-        .footer-links a:hover {
-            color: var(--primary-color);
-        }
-        /* Responsive Design */
-        
-        @media (max-width: 992px) {
-            .div-text h1 {
-                font-size: 2.5rem;
-            }
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .links {
-                position: fixed;
-                top: 70px;
-                right: -100%;
-                width: 80%;
-                max-width: 300px;
-                height: calc(100vh - 70px);
-                background-color: var(--dark-bg);
-                flex-direction: column;
-                padding: 2rem;
-                transition: right 0.3s;
-                z-index: 999;
-            }
-            [dir="ltr"] .links {
-                right: auto;
-                left: -100%;
-            }
-            .links.active {
-                right: 0;
-            }
-            [dir="ltr"] .links.active {
-                left: 0;
-            }
-            .links li {
-                margin: 1rem 0;
-            }
-            #btnMenu {
-                display: block;
-            }
-            .lang-switcher {
-                margin-right: auto;
-                margin-left: 1rem;
-            }
-            [dir="ltr"] .lang-switcher {
-                margin-left: auto;
-                margin-right: 1rem;
-            }
-            .hero-sec {
-                padding-top: 6rem;
-                text-align: center;
-            }
-            .div-text {
-                text-align: center;
-            }
-            .btn {
-                margin-right: 0;
-                margin-bottom: 1rem;
-                display: block;
-                width: 100%;
-            }
-            .about-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            .info {
-                justify-content: center;
-            }
-            .contact-container {
-                flex-direction: column;
-            }
-            .about-img img {
-                max-width: 100%;
-                height: auto;
-                border-radius: 10px;
-                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-                border: 3px solid var(--primary-color);
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .div-text h1 {
-                font-size: 2rem;
-            }
-            .section {
-                padding: 3rem 1rem;
-            }
-            .project-card {
-                min-width: 100%;
-            }
-        }
-        /* ملفاتي - قسم جديد */
-        
-        .my-files {
-            padding: 5rem 2rem;
-            background-color: #f9f9f9;
-        }
-        
-        .files-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .file-card {
-            background: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-            text-align: center;
-        }
-        
-        .file-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .file-icon {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-        
-        .file-name {
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            color: var(--dark-bg);
-        }
-        
-        .file-download {
-            display: inline-block;
-            margin-top: 1rem;
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .file-download:hover {
-            text-decoration: underline;
-        }
-        /* أنماط زر التبديل */
-        
-        .theme-switcher {
-            margin-right: 1rem;
-        }
-        
-        [dir="ltr"] .theme-switcher {
-            margin-right: 0;
-            margin-left: 1rem;
-        }
-        
-        #themeToggle {
-            background: none;
-            border: none;
-            color: var(--white);
-            cursor: pointer;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        /* أنماط الوضع الليلي */
+ :root {
+            --primary-color: #e74c3c;
+            /* أحمر مخفف */
+            --secondary-color: #cad6de;
+            /* أزرق-رمادي داكن */
+            --accent-color: #c0392b;
+            /* أحمر داكن */
+            --text-color: #000000;
+            /* نص أسود في الوضع العادي */
+            --light-bg: #cad6de;
+            /* خلفية فاتحة */
+            --dark-bg: #121212;
+            /* خلفية داكنة للوضع الليلي */
+            --white: #ffffff;
+            /* أبيض نقي */
+        }
+        /* الوضع الليلي */
         
         body.dark-mode {
-            --text-color: #f0f0f0;
-            --light-bg: #1a1a1a;
+            --text-color: #ffffff;
+            /* نص أبيض في الوضع الليلي */
+            --light-bg: #121212;
+            /* خلفية داكنة */
+            --dark-bg: #000000;
+            /* أسود داكن */
             --white: #2d2d2d;
-            --dark-bg: #121212;
-        }
-        
-        body.dark-mode .section {
-            background-color: #1a1a1a;
-        }
-        
-        body.dark-mode .skill-category,
-        body.dark-mode .project-card,
-        body.dark-mode .contact-form {
-            background: #2d2d2d;
-            color: #f0f0f0;
-        }
-        
-        body.dark-mode .project-tech span {
-            background: #3d3d3d;
-            color: #f0f0f0;
-        }
-        
-        body.dark-mode .file-card {
-            background: #2d2d2d;
-            color: #f0f0f0;
-        }
-        
-        body.dark-mode .file-name {
-            color: #f0f0f0;
-        }
-        
-        @media (max-width: 768px) {
-            .theme-switcher {
-                margin-right: auto;
-                margin-left: 1rem;
-            }
-            [dir="ltr"] .theme-switcher {
-                margin-left: auto;
-                margin-right: 1rem;
-            }
+            /* رمادي داكن */
         }
     }
-    /* تأثيرات الصور */
-    .fade-in {
-        animation: fadeIn 1s ease-in-out;
-    }
-    .bg-fade-in {
-        animation: bgFadeIn 1.5s ease-in-out;
-    }
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    @keyframes bgFadeIn {
-        from {
-            opacity: 0;
-        }
-        
-        to {
-            opacity: 1;
-        }
-    }
-    /* Lightbox */
-    #image-lightbox {
+    /* أنماط خلفية RGB المتحركة */
+    .rgb-background {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-        opacity: 0;
-        animation: fadeIn 0.3s forwards;
+        background: linear-gradient(45deg, rgba(255, 0, 0, 0.1), rgba(0, 255, 0, 0.1), rgba(0, 0, 255, 0.1));
+        background-size: 400% 400%;
+        animation: rgbAnimation 15s ease infinite;
+        z-index: -1;
+        opacity: 0.5;
     }
-    .lightbox-content {
+    @keyframes rgbAnimation {
+        0% {
+            background-position: 0% 50%;
+        }
+        
+        50% {
+            background-position: 100% 50%;
+        }
+        
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+    /* تطبيق ألوان العناوين */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: var(--heading-color);
+        transition: color 0.3s ease;
+        /* تأثير انتقالي سلس */
+    }
+    /* التأكد من أن الروابط في العناوين تحافظ على الألوان */
+    h1 a,
+    h2 a,
+    h3 a,
+    h4 a,
+    h5 a,
+    h6 a {
+        color: inherit;
+    }
+    /* تأثير التحويم على العناوين */
+    h1:hover,
+    h2:hover,
+    h3:hover,
+    h4:hover,
+    h5:hover,
+    h6:hover {
+        color: var(--primary-color);
+    }
+    /* ضبط طبقات العناصر */
+    body {
         position: relative;
-        max-width: 90%;
-        max-height: 90%;
     }
-    .lightbox-content img {
-        max-height: 80vh;
-        max-width: 100%;
-        border-radius: 8px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    header,
+    .section,
+    footer {
+        background-color: rgba(0, 0, 0, 0.8);
+        /* شفافية لتظهر الخلفية */
+        
+        position: relative;
+        z-index: 1;
     }
-    .close-btn {
+    /* تحسين رؤية النص مع الخلفية الجديدة */
+    .section-title,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+    h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 0.8rem;
+    }
+    h3 {
+        font-size: 1.75rem;
+        font-weight: 500;
+        margin-bottom: 0.6rem;
+    }
+    /* تحسين أزرار القوائم */
+    .links a {
+        color: white;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+    .links a:hover {
+        color: var(--primary-color);
+    }
+    /* تحسين الأزرار */
+    .btn {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        font-weight: bold;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 4px 8px rgba(255, 0, 0, 0.2);
+    }
+    .btn:hover {
+        background-color: #e60000;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(255, 0, 0, 0.3);
+    }
+    .btn-outline {
+        background-color: transparent;
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
+    }
+    .btn-outline:hover {
+        background-color: var(--primary-color);
+        color: white;
+    }
+    /* تحسين شريط المهارات */
+    .skill-level {
+        background: linear-gradient(90deg, #ff0000, #cc0000);
+        box-shadow: 0 2px 4px rgba(255, 0, 0, 0.2);
+    }
+    /* تأثيرات خاصة للبطاقات */
+    .project-card,
+    .blog-card,
+    .cert-card {
+        border: 1px solid rgba(255, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+    .project-card:hover,
+    .blog-card:hover,
+    .cert-card:hover {
+        border-color: var(--primary-color);
+        box-shadow: 0 10px 20px rgba(255, 0, 0, 0.15);
+    }
+    /* تحسينات للوضع الليلي */
+    body.dark-mode .project-card,
+    body.dark-mode .blog-card,
+    body.dark-mode .cert-card {
+        background: rgba(30, 30, 30, 0.9);
+        border-color: rgba(255, 0, 0, 0.3);
+    }
+    body.dark-mode .btn-outline {
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+    }
+    body.dark-mode .btn-outline:hover {
+        background-color: var(--primary-color);
+        color: white;
+    }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
+    }
+    body {
+        font-family: 'Tajawal', 'Roboto', sans-serif;
+        line-height: 1.8;
+        color: var(--text-color);
+        background-color: var(--light-bg);
+    }
+    body[dir="rtl"] {
+        font-family: 'Tajawal', sans-serif;
+    }
+    body[dir="ltr"] {
+        font-family: 'Roboto', sans-serif;
+    }
+    /* Header Styles */
+    header {
+        background-color: var(--dark-bg);
+        color: var(--white);
+        padding: 1rem 2rem;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        text-decoration: none;
+        color: var(--white);
+    }
+    .logo span {
+        color: var(--primary-color);
+    }
+    .links {
+        display: flex;
+        list-style: none;
+    }
+    .links li {
+        margin: 0 1rem;
+    }
+    .links a {
+        color: var(--white);
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.5rem 0;
+        position: relative;
+    }
+    .links a::after {
+        content: '';
         position: absolute;
-        top: -40px;
+        bottom: 0;
         right: 0;
-        color: white;
-        font-size: 30px;
-        cursor: pointer;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-color);
+        transition: width 0.3s;
     }
-    .image-caption {
-        color: white;
-        text-align: center;
-        margin-top: 15px;
+    .links a:hover::after,
+    .links .active a::after {
+        width: 100%;
+        right: auto;
+        left: 0;
+    }
+    .social-links a {
+        color: var(--white);
+        margin: 0 0.5rem;
         font-size: 1.2rem;
     }
-    /* أنماط المدونة */
-    .blog-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    .social-links a:hover {
+        color: var(--primary-color);
+    }
+    .lang-switcher {
+        margin-right: 1rem;
+    }
+    .lang-switcher button {
+        background: none;
+        border: none;
+        color: var(--white);
+        cursor: pointer;
+        font-weight: 500;
+        opacity: 0.7;
+    }
+    .lang-switcher button.active {
+        opacity: 1;
+        color: var(--primary-color);
+    }
+    #btnMenu {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--white);
+    }
+    /* Hero Section */
+    .hero-sec {
+        padding: 8rem 2rem 4rem;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(135deg, var(--dark-bg) 0%, var(--primary-color) 100%);
+        color: var(--white);
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+    .div-text {
+        flex: 1;
+        min-width: 300px;
+    }
+    .div-text h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+    .div-text span {
+        display: inline-block;
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+    }
+    .div-text p {
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+        opacity: 0.9;
+    }
+    .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: var(--white);
+        padding: 0.8rem 1.5rem;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 500;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+    }
+    .btn:hover {
+        background-color: #2980b9;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    .btn-outline {
+        background-color: transparent;
+        border: 1px solid var(--primary-color);
+    }
+    .div-img {
+        flex: 1;
+        min-width: 300px;
+        text-align: center;
+    }
+    .div-img img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    /* تحسين تباين العناوين */
+    .section-title {
+        color: var(--heading-color);
+        position: relative;
+        padding-bottom: 10px;
+    }
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background: var(--primary-color);
+    }
+    /* عناوين البطاقات */
+    .card-title,
+    .project-info h3,
+    .blog-content h3 {
+        color: var(--heading-color);
+    }
+    /* الوضع الليلي للعناوين */
+    .dark-mode .section-title,
+    .dark-mode .card-title,
+    .dark-mode .project-info h3,
+    .dark-mode .blog-content h3 {
+        color: var(--heading-color);
+        /* أبيض في الوضع الليلي */
+    }
+    /* Sections */
+    .section {
+        padding: 5rem 2rem;
+    }
+    .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: var(--dark-bg);
+        position: relative;
+        display: inline-block;
+    }
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        height: 3px;
+        width: 50%;
+        background-color: var(--primary-color);
+    }
+    [dir="rtl"] .section-title::after {
+        right: 0;
+    }
+    [dir="ltr"] .section-title::after {
+        left: 0;
+    }
+    /* About Section */
+    .about-content {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 3rem;
+    }
+    .about-img {
+        flex: 1;
+        min-width: 300px;
+        text-align: center;
+    }
+    .about-img img {
+        max-width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+    .about-text {
+        flex: 1;
+        min-width: 300px;
+    }
+    .about-text h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        color: var(--dark-bg);
+    }
+    .info {
+        display: flex;
+        flex-wrap: wrap;
         gap: 2rem;
         margin-top: 2rem;
     }
-    .blog-card {
+    .info-item {
+        flex: 1;
+        min-width: 200px;
+    }
+    .info-item p {
+        margin-bottom: 0.8rem;
+    }
+    .info-item strong {
+        color: var(--dark-bg);
+    }
+    /* Skills Section */
+    .skills-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+    .skill-category {
+        flex: 1;
+        min-width: 300px;
+        background: var(--white);
+        padding: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    .skill-category h3 {
+        color: var(--dark-bg);
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--primary-color);
+    }
+    .skill-item {
+        margin-bottom: 1.5rem;
+    }
+    .skill-name {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+    }
+    .skill-bar {
+        height: 8px;
+        background: #eee;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    .skill-level {
+        height: 100%;
+        background: var(--primary-color);
+    }
+    /* Projects Section */
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+    }
+    .project-card {
         background: var(--white);
         border-radius: 10px;
         overflow: hidden;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s, box-shadow 0.3s;
     }
-    .blog-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
     }
-    .blog-img {
+    .project-img {
         height: 200px;
         overflow: hidden;
     }
-    .blog-img img {
+    .project-img img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         transition: transform 0.5s;
     }
-    .blog-card:hover .blog-img img {
-        transform: scale(1.05);
+    .project-card:hover .project-img img {
+        transform: scale(1.1);
     }
-    .blog-content {
+    .project-info {
         padding: 1.5rem;
     }
-    .blog-date {
-        display: block;
-        color: var(--primary-color);
-        margin-bottom: 0.5rem;
-        font-size: 0.9rem;
-    }
-    .blog-content h3 {
+    .project-info h3 {
+        color: var(--dark-bg);
         margin-bottom: 1rem;
+    }
+    .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 1rem 0;
+    }
+    .project-tech span {
+        background: #f0f0f0;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
         color: var(--dark-bg);
     }
-    .read-more {
+    /* Contact Section */
+    .contact-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3rem;
+    }
+    .contact-info {
+        flex: 1;
+        min-width: 300px;
+        background: var(--dark-bg);
+        color: var(--white);
+        padding: 2rem;
+        border-radius: 10px;
+    }
+    .contact-info h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        color: var(--white);
+    }
+    .contact-info p {
+        margin-bottom: 2rem;
+        opacity: 0.9;
+    }
+    .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+    [dir="rtl"] .contact-item i {
+        margin-left: 1rem;
+    }
+    [dir="ltr"] .contact-item i {
+        margin-right: 1rem;
+    }
+    .contact-item i {
+        color: var(--primary-color);
+        font-size: 1.2rem;
+    }
+    .contact-social {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+    .contact-social a {
+        color: var(--white);
+        font-size: 1.3rem;
+    }
+    .contact-social a:hover {
+        color: var(--primary-color);
+    }
+    .contact-form {
+        flex: 1;
+        min-width: 300px;
+        background: var(--white);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--dark-bg);
+        font-weight: 500;
+    }
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-family: inherit;
+    }
+    .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
+    /* Footer */
+    footer {
+        background: var(--dark-bg);
+        color: var(--white);
+        text-align: center;
+        padding: 2rem;
+    }
+    footer p {
+        margin-bottom: 1rem;
+    }
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .footer-links a {
+        color: var(--white);
+        text-decoration: none;
+    }
+    .footer-links a:hover {
+        color: var(--primary-color);
+    }
+    /* Responsive Design */
+    @media (max-width: 992px) {
+        .div-text h1 {
+            font-size: 2.5rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+        }
+    }
+    @media (max-width: 768px) {
+        .links {
+            position: fixed;
+            top: 70px;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: calc(100vh - 70px);
+            background-color: var(--dark-bg);
+            flex-direction: column;
+            padding: 2rem;
+            transition: right 0.3s;
+            z-index: 999;
+        }
+        
+        [dir="ltr"] .links {
+            right: auto;
+            left: -100%;
+        }
+        
+        .links.active {
+            right: 0;
+        }
+        
+        [dir="ltr"] .links.active {
+            left: 0;
+        }
+        
+        .links li {
+            margin: 1rem 0;
+        }
+        
+        #btnMenu {
+            display: block;
+        }
+        
+        .lang-switcher {
+            margin-right: auto;
+            margin-left: 1rem;
+        }
+        
+        [dir="ltr"] .lang-switcher {
+            margin-left: auto;
+            margin-right: 1rem;
+        }
+        
+        .hero-sec {
+            padding-top: 6rem;
+            text-align: center;
+        }
+        
+        .div-text {
+            text-align: center;
+        }
+        
+        .btn {
+            margin-right: 0;
+            margin-bottom: 1rem;
+            display: block;
+            width: 100%;
+        }
+        
+        .about-content {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .info {
+            justify-content: center;
+        }
+        
+        .contact-container {
+            flex-direction: column;
+        }
+        
+        .about-img img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 3px solid var(--primary-color);
+        }
+    }
+    @media (max-width: 480px) {
+        .div-text h1 {
+            font-size: 2rem;
+        }
+        
+        .section {
+            padding: 3rem 1rem;
+        }
+        
+        .project-card {
+            min-width: 100%;
+        }
+    }
+    /* ملفاتي - قسم جديد */
+    .my-files {
+        padding: 5rem 2rem;
+        background-color: #f9f9f9;
+    }
+    .files-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    .file-card {
+        background: white;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s;
+        text-align: center;
+    }
+    .file-card:hover {
+        transform: translateY(-5px);
+    }
+    .file-icon {
+        font-size: 3rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+    .file-name {
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        color: var(--dark-bg);
+    }
+    .file-download {
         display: inline-block;
         margin-top: 1rem;
         color: var(--primary-color);
-        font-weight: 500;
         text-decoration: none;
+        font-weight: 500;
     }
-    .read-more:hover {
+    .file-download:hover {
         text-decoration: underline;
     }
-    /* أنماط الخط الزمني للخبرات */
-    .timeline {
-        position: relative;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 2rem 0;
+    /* أنماط زر التبديل */
+    .theme-switcher {
+        margin-right: 1rem;
     }
-    .timeline::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 2px;
-        background: var(--primary-color);
-        left: 50%;
-        transform: translateX(-50%);
+    [dir="ltr"] .theme-switcher {
+        margin-right: 0;
+        margin-left: 1rem;
     }
-    .timeline-item {
-        position: relative;
-        margin-bottom: 3rem;
-        width: 100%;
-    }
-    .timeline-date {
-        position: absolute;
-        top: 0;
-        width: 120px;
-        padding: 0.5rem;
-        text-align: center;
-        background: var(--primary-color);
-        color: white;
-        border-radius: 5px;
+    #themeToggle {
+        background: none;
+        border: none;
+        color: var(--white);
+        cursor: pointer;
         font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
     }
-    [dir="rtl"] .timeline-date {
-        right: 50%;
-        margin-right: -60px;
+    /* أنماط الوضع الليلي */
+    body.dark-mode {
+        --text-color: #f0f0f0;
+        --light-bg: #1a1a1a;
+        --white: #2d2d2d;
+        --dark-bg: #121212;
     }
-    [dir="ltr"] .timeline-date {
-        left: 50%;
-        margin-left: -60px;
+    body.dark-mode .section {
+        background-color: #1a1a1a;
     }
-    .timeline-content {
-        position: relative;
-        padding: 1.5rem;
-        background: var(--white);
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        width: calc(50% - 40px);
-    }
-    [dir="rtl"] .timeline-content {
-        margin-right: 60px;
-    }
-    [dir="ltr"] .timeline-content {
-        margin-left: 60px;
-    }
-    .timeline-item:nth-child(even) .timeline-content {
-        [dir="rtl"] & {
-            margin-right: auto;
-            margin-left: 60px;
-        }
-        
-        [dir="ltr"] & {
-            margin-left: auto;
-            margin-right: 60px;
-        }
-    }
-    .timeline-content h3 {
-        color: var(--dark-bg);
-        margin-bottom: 0.5rem;
-    }
-    .company {
-        display: block;
-        color: var(--primary-color);
-        margin-bottom: 1rem;
-        font-weight: 500;
-    }
-    .timeline-content ul {
-        padding-right: 1rem;
-        [dir="ltr"] & {
-            padding-right: 0;
-            padding-left: 1rem;
-        }
-    }
-    .timeline-content li {
-        margin-bottom: 0.5rem;
-    }
-    /* تأثيرات للوضع الليلي */
-    body.dark-mode .blog-card,
-    body.dark-mode .timeline-content {
+    body.dark-mode .skill-category,
+    body.dark-mode .project-card,
+    body.dark-mode .contact-form {
         background: #2d2d2d;
         color: #f0f0f0;
     }
-    body.dark-mode .blog-content h3,
-    body.dark-mode .timeline-content h3 {
+    body.dark-mode .project-tech span {
+        background: #3d3d3d;
+        color: #f0f0f0;
+    }
+    body.dark-mode .file-card {
+        background: #2d2d2d;
+        color: #f0f0f0;
+    }
+    body.dark-mode .file-name {
         color: #f0f0f0;
     }
     @media (max-width: 768px) {
-        .timeline::before {
-            left: 30px;
-            [dir="ltr"] & {
-                left: auto;
-                right: 30px;
-            }
+        .theme-switcher {
+            margin-right: auto;
+            margin-left: 1rem;
         }
         
-        .timeline-date {
-            position: relative;
-            top: auto;
-            left: auto;
-            right: auto;
-            margin: 0 0 1rem 0;
-            width: auto;
-            display: inline-block;
-        }
-        
-        .timeline-content {
-            width: auto;
-            margin: 0 0 0 60px;
-            [dir="ltr"] & {
-                margin: 0 60px 0 0;
-            }
-        }
-        
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-left: 60px;
-            [dir="ltr"] & {
-                margin-left: 0;
-                margin-right: 60px;
-            }
+        [dir="ltr"] .theme-switcher {
+            margin-left: auto;
+            margin-right: 1rem;
         }
     }
+}
+
+/* تأثيرات الصور */
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+.bg-fade-in {
+    animation: bgFadeIn 1.5s ease-in-out;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes bgFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Lightbox */
+#image-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+}
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+.lightbox-content img {
+    max-height: 80vh;
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+.close-btn {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+.image-caption {
+    color: white;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 1.2rem;
+}
+
+/* أنماط المدونة */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+.blog-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s,
+    box-shadow 0.3s;
+}
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+.blog-img {
+    height: 200px;
+    overflow: hidden;
+}
+.blog-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+.blog-card:hover .blog-img img {
+    transform: scale(1.05);
+}
+.blog-content {
+    padding: 1.5rem;
+}
+.blog-date {
+    display: block;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+.blog-content h3 {
+    margin-bottom: 1rem;
+    color: var(--dark-bg);
+}
+.read-more {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    text-decoration: none;
+}
+.read-more:hover {
+    text-decoration: underline;
+}
+
+/* أنماط الخط الزمني للخبرات */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--primary-color);
+    left: 50%;
+    transform: translateX(-50%);
+}
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    width: 100%;
+}
+.timeline-date {
+    position: absolute;
+    top: 0;
+    width: 120px;
+    padding: 0.5rem;
+    text-align: center;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 5px;
+    font-weight: 500;
+}
+[dir="rtl"] .timeline-date {
+    right: 50%;
+    margin-right: -60px;
+}
+[dir="ltr"] .timeline-date {
+    left: 50%;
+    margin-left: -60px;
+}
+.timeline-content {
+    position: relative;
+    padding: 1.5rem;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    width: calc(50% - 40px);
+}
+[dir="rtl"] .timeline-content {
+    margin-right: 60px;
+}
+[dir="ltr"] .timeline-content {
+    margin-left: 60px;
+}
+.timeline-item:nth-child(even) .timeline-content {
+    [dir="rtl"] & {
+        margin-right: auto;
+        margin-left: 60px;
+    }
+    [dir="ltr"] & {
+        margin-left: auto;
+        margin-right: 60px;
+    }
+}
+.timeline-content h3 {
+    color: var(--dark-bg);
+    margin-bottom: 0.5rem;
+}
+.company {
+    display: block;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+.timeline-content ul {
+    padding-right: 1rem;
+    [dir="ltr"] & {
+        padding-right: 0;
+        padding-left: 1rem;
+    }
+}
+.timeline-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* تأثيرات للوضع الليلي */
+body.dark-mode .blog-card,
+body.dark-mode .timeline-content {
+    background: #2d2d2d;
+    color: #f0f0f0;
+}
+body.dark-mode .blog-content h3,
+body.dark-mode .timeline-content h3 {
+    color: #f0f0f0;
+}
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 30px;
+        [dir="ltr"] & {
+            left: auto;
+            right: 30px;
+        }
+    }
+    .timeline-date {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        margin: 0 0 1rem 0;
+        width: auto;
+        display: inline-block;
+    }
+    .timeline-content {
+        width: auto;
+        margin: 0 0 0 60px;
+        [dir="ltr"] & {
+            margin: 0 60px 0 0;
+        }
+    }
+    .timeline-item:nth-child(even) .timeline-content {
+        margin-left: 60px;
+        [dir="ltr"] & {
+            margin-left: 0;
+            margin-right: 60px;
+        }
+    }
+}
     </style>
 </head>
 
@@ -1001,6 +1122,7 @@
     <header>
         <nav>
             <a href="#" class="logo"><span>رياض</span> جعفر جبار</a>
+
             <ul class="links">
                 <li class="active"><a href="#home">الرئيسية</a></li>
                 <li><a href="#about">عنّي</a></li>
@@ -1011,26 +1133,37 @@
 
             <div class="lang-switcher">
                 <button onclick="switchLanguage('ar')" class="active">العربية</button>
-                <span style="color: var(--white)">|</span>
+                <span>|</span>
                 <button onclick="switchLanguage('en')">English</button>
             </div>
-            <!-- داخل عنصر <nav> بعد عنصر .lang-switcher -->
+
             <div class="theme-switcher">
-                <button id="themeToggle" aria-label="تبديل الوضع">
-        <i class="fas fa-moon"></i>
-        <span class="ar-text">الوضع الليلي</span>
-        <span class="en-text" style="display: none;">Dark Mode</span>
-    </button>
+                <button id="themeToggle">
+                <i class="fas fa-moon"></i>
+                <span class="ar-text">الوضع الليلي</span>
+                <span class="en-text">Dark Mode</span>
+            </button>
             </div>
+
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://twitter.com/yourhandle" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
             </div>
 
             <i id="btnMenu" class="fas fa-bars"></i>
-
         </nav>
+    </header>
+    </div>
+    <div class="social-links">
+        <a href="https://www.linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://twitter.com/yourhandle" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+
+    <i id="btnMenu" class="fas fa-bars"></i>
+
+    </nav>
     </header>
 
     <section id="home" class="hero-sec">
@@ -1529,385 +1662,417 @@
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        let btnMenu = document.getElementById("btnMenu");
-        let NavLinks = document.querySelector(".links");
+        document.addEventListener('DOMContentLoaded', function() {
+            // ============ Mobile Menu Toggle ============
+            const btnMenu = document.getElementById("btnMenu");
+            const NavLinks = document.querySelector(".links");
+            const navbar = document.querySelector("header");
 
-        btnMenu.onclick = function() {
-            btnMenu.classList.toggle("fa-times");
-            NavLinks.classList.toggle("active");
-        }
+            // Initialize navbar scroll behavior
+            let lastScrollTop = 0;
 
-        // Language Switching Function
-        function switchLanguage(lang) {
-            const arElements = document.querySelectorAll('.ar-text');
-            const enElements = document.querySelectorAll('.en-text');
-            const langButtons = document.querySelectorAll('.lang-switcher button');
+            // 1. Mobile menu toggle function
+            function toggleMobileMenu() {
+                if (btnMenu && NavLinks) {
+                    btnMenu.classList.toggle("fa-times");
+                    NavLinks.classList.toggle("active");
 
-            if (lang === 'ar') {
-                document.body.setAttribute('dir', 'rtl');
-
-                arElements.forEach(el => {
-                    el.style.display = 'block';
-                });
-
-                enElements.forEach(el => {
-                    el.style.display = 'none';
-                });
-
-                langButtons[0].classList.add('active');
-                langButtons[1].classList.remove('active');
-            } else {
-                document.body.setAttribute('dir', 'ltr');
-
-                arElements.forEach(el => {
-                    el.style.display = 'none';
-                });
-
-                enElements.forEach(el => {
-                    el.style.display = 'block';
-                });
-
-                langButtons[0].classList.remove('active');
-                langButtons[1].classList.add('active');
+                    // Toggle body overflow when menu is open
+                    document.body.style.overflow = NavLinks.classList.contains("active") ? 'hidden' : 'auto';
+                }
             }
 
-            // Close mobile menu if open
-            if (NavLinks.classList.contains('active')) {
-                btnMenu.classList.remove("fa-times");
-                NavLinks.classList.remove("active");
-            }
-        }
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-
-                // Close mobile menu if open
-                if (NavLinks.classList.contains('active')) {
+            // 2. Close mobile menu when clicking on links
+            function closeMobileMenu() {
+                if (btnMenu && NavLinks) {
                     btnMenu.classList.remove("fa-times");
                     NavLinks.classList.remove("active");
+                    document.body.style.overflow = 'auto';
                 }
-            });
-        });
-
-        // Update year in footer
-        const currentYear = new Date().getFullYear();
-        document.getElementById('year').textContent = currentYear;
-        document.getElementById('year-en').textContent = currentYear;
-
-        // Form submission
-        const contactForm = document.querySelector('.contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert(document.querySelector('.ar-text').style.display !== 'none' ?
-                    'تم إرسال رسالتك بنجاح! سأتواصل معك قريبًا.' :
-                    'Your message has been sent successfully! I will contact you soon.');
-                this.reset();
-            });
-        }
-        // ملفاتي - JavaScript
-        document.addEventListener('DOMContentLoaded', function() {
-            // تحديث رابط التنقل في الهيدر
-            const navLinks = document.querySelector('.links');
-            const filesNavItem = document.createElement('li');
-            filesNavItem.innerHTML = '<a href="#files" class="ar-text">ملفاتي</a><a href="#files" class="en-text" style="display: none;">My Files</a>';
-            navLinks.insertBefore(filesNavItem, navLinks.children[4]); // إدراج قبل "اتصل بي"
-        });
-        // في نهاية ملف script.js
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.getElementById('themeToggle');
-            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-
-            // تحميل الوضع المحفوظ أو استخدام تفضيلات النظام
-            const currentTheme = localStorage.getItem('theme') ||
-                (prefersDarkScheme.matches ? 'dark' : 'light');
-
-            if (currentTheme === 'dark') {
-                document.body.classList.add('dark-mode');
-                updateThemeButton('dark');
             }
 
-            // تبديل الوضع عند النقر
-            themeToggle.addEventListener('click', function() {
-                const isDark = document.body.classList.toggle('dark-mode');
-                localStorage.setItem('theme', isDark ? 'dark' : 'light');
-                updateThemeButton(isDark ? 'dark' : 'light');
-            });
+            // 3. Navbar scroll behavior
+            function handleScroll() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-            // تحديث زر التبديل
-            function updateThemeButton(theme) {
-                const icon = themeToggle.querySelector('i');
-                const arText = themeToggle.querySelector('.ar-text');
-                const enText = themeToggle.querySelector('.en-text');
-
-                if (theme === 'dark') {
-                    icon.classList.replace('fa-moon', 'fa-sun');
-                    arText.textContent = 'الوضع النهاري';
-                    enText.textContent = 'Light Mode';
+                if (scrollTop > lastScrollTop) {
+                    // Scrolling down
+                    if (navbar) navbar.style.top = '-80px';
                 } else {
-                    icon.classList.replace('fa-sun', 'fa-moon');
-                    arText.textContent = 'الوضع الليلي';
-                    enText.textContent = 'Dark Mode';
+                    // Scrolling up
+                    if (navbar) navbar.style.top = '0';
                 }
 
-                // تحديث النص المعروض حسب اللغة الحالية
-                const isArabic = document.querySelector('.ar-text').style.display !== 'none';
-                arText.style.display = isArabic ? 'inline' : 'none';
-                enText.style.display = isArabic ? 'none' : 'inline';
+                lastScrollTop = scrollTop;
+
+                // Add shadow when scrolled
+                if (navbar) {
+                    navbar.style.boxShadow = scrollTop > 50 ? '0 2px 10px rgba(0, 0, 0, 0.1)' : 'none';
+                }
             }
 
-            // مراقبة تغييرات تفضيلات النظام
-            prefersDarkScheme.addEventListener('change', e => {
-                if (!localStorage.getItem('theme')) {
-                    document.body.classList.toggle('dark-mode', e.matches);
-                    updateThemeButton(e.matches ? 'dark' : 'light');
+            // Initialize navbar functionality
+            if (btnMenu) {
+                btnMenu.addEventListener('click', toggleMobileMenu);
+            }
+
+            // Close menu when clicking on nav links
+            document.querySelectorAll('.links a').forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+
+            // Set up scroll event listener
+            window.addEventListener('scroll', handleScroll);
+
+            // ============ Language Switching ============
+            function switchLanguage(lang) {
+                const arElements = document.querySelectorAll('.ar-text');
+                const enElements = document.querySelectorAll('.en-text');
+                const langButtons = document.querySelectorAll('.lang-switcher button');
+
+                if (lang === 'ar') {
+                    document.body.setAttribute('dir', 'rtl');
+                    arElements.forEach(el => el.style.display = 'block');
+                    enElements.forEach(el => el.style.display = 'none');
+                    if (langButtons[0]) langButtons[0].classList.add('active');
+                    if (langButtons[1]) langButtons[1].classList.remove('active');
+                } else {
+                    document.body.setAttribute('dir', 'ltr');
+                    arElements.forEach(el => el.style.display = 'none');
+                    enElements.forEach(el => el.style.display = 'block');
+                    if (langButtons[0]) langButtons[0].classList.remove('active');
+                    if (langButtons[1]) langButtons[1].classList.add('active');
                 }
+
+                closeMobileMenu();
+            }
+
+            // Initialize language based on initial body direction
+            switchLanguage(document.body.getAttribute('dir') === 'rtl' ? 'ar' : 'en');
+
+            // ============ Smooth Scrolling ============
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        closeMobileMenu();
+                    }
+                });
             });
-        });
-        document.addEventListener('DOMContentLoaded', function() {
-            // 1. تحسين تحميل الصور (Lazy Loading)
-            const images = document.querySelectorAll('img[data-src], [data-bg]');
 
-            // 2. إنشاء Intersection Observer لتحميل الصور عند الظهور
-            const imgObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) return;
+            // ============ Update Footer Year ============
+            const currentYear = new Date().getFullYear();
+            const yearElement = document.getElementById('year');
+            const yearEnElement = document.getElementById('year-en');
 
-                    const element = entry.target;
+            if (yearElement) yearElement.textContent = currentYear;
+            if (yearEnElement) yearEnElement.textContent = currentYear;
 
-                    // للصور العادية
-                    if (element.tagName === 'IMG') {
-                        const src = element.getAttribute('data-src');
-                        if (src) {
-                            element.src = src;
-                            element.removeAttribute('data-src');
-                            element.classList.add('fade-in');
+            // ============ Form Submission ============
+            const contactForm = document.querySelector('.contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const isArabic = document.querySelector('.ar-text').style.display !== 'none';
+                    alert(isArabic ?
+                        'تم إرسال رسالتك بنجاح! سأتواصل معك قريبًا.' :
+                        'Your message has been sent successfully! I will contact you soon.');
+                    this.reset();
+                });
+            }
+
+            // ============ Dark Mode Toggle ============
+            const themeToggle = document.getElementById('themeToggle');
+            if (themeToggle) {
+                const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+                const currentTheme = localStorage.getItem('theme') ||
+                    (prefersDarkScheme.matches ? 'dark' : 'light');
+
+                // Apply saved theme
+                if (currentTheme === 'dark') {
+                    document.body.classList.add('dark-mode');
+                }
+
+                // Update button state
+                updateThemeButton(currentTheme);
+
+                // Toggle theme on button click
+                themeToggle.addEventListener('click', function() {
+                    const isDark = document.body.classList.toggle('dark-mode');
+                    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                    updateThemeButton(isDark ? 'dark' : 'light');
+                });
+
+                // Watch for system theme changes
+                prefersDarkScheme.addEventListener('change', e => {
+                    if (!localStorage.getItem('theme')) {
+                        const newTheme = e.matches ? 'dark' : 'light';
+                        document.body.classList.toggle('dark-mode', e.matches);
+                        updateThemeButton(newTheme);
+                    }
+                });
+
+                function updateThemeButton(theme) {
+                    const icon = themeToggle.querySelector('i');
+                    const arText = themeToggle.querySelector('.ar-text');
+                    const enText = themeToggle.querySelector('.en-text');
+                    const isArabic = document.querySelector('.ar-text').style.display !== 'none';
+
+                    if (theme === 'dark') {
+                        if (icon) icon.classList.replace('fa-moon', 'fa-sun');
+                        if (arText) {
+                            arText.textContent = 'الوضع النهاري';
+                            arText.style.display = isArabic ? 'inline' : 'none';
+                        }
+                        if (enText) {
+                            enText.textContent = 'Light Mode';
+                            enText.style.display = isArabic ? 'none' : 'inline';
+                        }
+                    } else {
+                        if (icon) icon.classList.replace('fa-sun', 'fa-moon');
+                        if (arText) {
+                            arText.textContent = 'الوضع الليلي';
+                            arText.style.display = isArabic ? 'inline' : 'none';
+                        }
+                        if (enText) {
+                            enText.textContent = 'Dark Mode';
+                            enText.style.display = isArabic ? 'none' : 'inline';
                         }
                     }
+                }
+            }
 
-                    // للخلفيات
-                    if (element.hasAttribute('data-bg')) {
-                        const bgUrl = element.getAttribute('data-bg');
-                        if (bgUrl) {
-                            element.style.backgroundImage = `url(${bgUrl})`;
-                            element.removeAttribute('data-bg');
-                            element.classList.add('bg-fade-in');
+            // ============ Image Handling ============
+            // 1. Lazy Loading Images
+            const lazyLoadImages = () => {
+                const lazyImages = document.querySelectorAll('img[data-src], [data-bg]');
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const element = entry.target;
+
+                            // For regular images
+                            if (element.tagName === 'IMG') {
+                                const src = element.getAttribute('data-src');
+                                if (src) {
+                                    element.src = src;
+                                    element.removeAttribute('data-src');
+                                    element.classList.add('fade-in');
+                                }
+                            }
+
+                            // For background images
+                            if (element.hasAttribute('data-bg')) {
+                                const bgUrl = element.getAttribute('data-bg');
+                                if (bgUrl) {
+                                    element.style.backgroundImage = `url(${bgUrl})`;
+                                    element.removeAttribute('data-bg');
+                                    element.classList.add('bg-fade-in');
+                                }
+                            }
+
+                            observer.unobserve(element);
                         }
-                    }
-
-                    observer.unobserve(element);
-                });
-            }, {
-                rootMargin: '200px', // يبدأ التحميل قبل 200px من ظهور الصورة
-                threshold: 0.1
-            });
-
-            images.forEach(img => imgObserver.observe(img));
-
-            // 3. تأثيرات انسيابية للصور عند التحويم
-            const imageContainers = document.querySelectorAll('.div-img, .about-img, .project-img');
-
-            imageContainers.forEach(container => {
-                const img = container.querySelector('img');
-                if (!img) return;
-
-                // تأثير التكبير عند التحويم
-                container.addEventListener('mouseenter', () => {
-                    img.style.transform = 'scale(1.05)';
-                    img.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
+                    });
+                }, {
+                    rootMargin: '200px',
+                    threshold: 0.1
                 });
 
-                container.addEventListener('mouseleave', () => {
-                    img.style.transform = 'scale(1)';
-                });
+                lazyImages.forEach(img => imageObserver.observe(img));
+            };
 
-                // تأثير إضاءة عند النقر
-                container.addEventListener('mousedown', () => {
-                    img.style.filter = 'brightness(0.8)';
-                });
+            // 2. Image hover effects
+            const initImageHoverEffects = () => {
+                const imageContainers = document.querySelectorAll('.div-img, .about-img, .project-img');
 
-                container.addEventListener('mouseup', () => {
-                    img.style.filter = 'brightness(1)';
-                });
-            });
+                imageContainers.forEach(container => {
+                    const img = container.querySelector('img');
+                    if (!img) return;
 
-            // 4. معاينة الصورة عند النقر (Lightbox)
-            document.querySelectorAll('.div-img img, .about-img img, .project-img img').forEach(img => {
-                img.addEventListener('click', function() {
-                    const lightbox = document.createElement('div');
-                    lightbox.id = 'image-lightbox';
-                    lightbox.innerHTML = `
-                <div class="lightbox-content">
-                    <span class="close-btn">&times;</span>
-                    <img src="${this.src}" alt="${this.alt}">
-                    <div class="image-caption">${this.alt || ''}</div>
-                </div>
-            `;
-
-                    document.body.appendChild(lightbox);
-
-                    // إغلاق Lightbox
-                    lightbox.querySelector('.close-btn').addEventListener('click', () => {
-                        lightbox.style.opacity = '0';
-                        setTimeout(() => lightbox.remove(), 300);
+                    container.addEventListener('mouseenter', () => {
+                        img.style.transform = 'scale(1.05)';
+                        img.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
                     });
 
-                    lightbox.addEventListener('click', (e) => {
-                        if (e.target === lightbox) {
-                            lightbox.style.opacity = '0';
-                            setTimeout(() => lightbox.remove(), 300);
-                        }
+                    container.addEventListener('mouseleave', () => {
+                        img.style.transform = 'scale(1)';
+                    });
+
+                    container.addEventListener('mousedown', () => {
+                        img.style.filter = 'brightness(0.8)';
+                    });
+
+                    container.addEventListener('mouseup', () => {
+                        img.style.filter = 'brightness(1)';
                     });
                 });
-            });
-        });
+            };
 
-        // 5. تحميل الصور الحرجة أولاً (مثل صورة الملف الشخصي)
-        function loadCriticalImages() {
-            const criticalImages = [
-                'images/rd.jpg',
-                'images/hero-bg.jpg'
-            ];
-
-            criticalImages.forEach(src => {
-                const img = new Image();
-                img.src = src;
-            });
-        }
-
-        // استدعاء الوظيفة عند التحميل
-        window.addEventListener('load', loadCriticalImages);
-        // إضافة تأثيرات للخط الزمني
-        function animateTimeline() {
-            const timelineItems = document.querySelectorAll('.timeline-item');
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-
-            timelineItems.forEach((item, index) => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(20px)';
-                item.style.transition = `opacity 0.5s ease ${index * 0.2}s, transform 0.5s ease ${index * 0.2}s`;
-                observer.observe(item);
-            });
-        }
-
-        // تحميل المقالات بشكل ديناميكي
-        function loadBlogPosts() {
-            fetch('api/blog-posts.json')
-                .then(response => response.json())
-                .then(posts => {
-                    const blogGrid = document.querySelector('.blog-grid');
-                    if (!blogGrid) return;
-
-                    blogGrid.innerHTML = '';
-
-                    posts.forEach(post => {
-                        const postElement = document.createElement('div');
-                        postElement.className = 'blog-card';
-                        postElement.innerHTML = `
-                    <div class="blog-img">
-                        <img src="${post.image}" alt="${post.title}">
-                    </div>
-                    <div class="blog-content">
-                        <span class="blog-date">${post.date}</span>
-                        <h3>${post.title}</h3>
-                        <p>${post.excerpt}</p>
-                        <a href="${post.link}" class="read-more">Read More</a>
+            // 3. Lightbox functionality
+            const initLightbox = () => {
+                document.querySelectorAll('.div-img img, .about-img img, .project-img img').forEach(img => {
+                    img.addEventListener('click', function() {
+                        const lightbox = document.createElement('div');
+                        lightbox.id = 'image-lightbox';
+                        lightbox.innerHTML = `
+                    <div class="lightbox-content">
+                        <span class="close-btn">&times;</span>
+                        <img src="${this.src}" alt="${this.alt || ''}">
+                        <div class="image-caption">${this.alt || ''}</div>
                     </div>
                 `;
 
-                        blogGrid.appendChild(postElement);
+                        document.body.appendChild(lightbox);
+
+                        // Close lightbox
+                        lightbox.querySelector('.close-btn').addEventListener('click', () => {
+                            lightbox.style.opacity = '0';
+                            setTimeout(() => lightbox.remove(), 300);
+                        });
+
+                        lightbox.addEventListener('click', (e) => {
+                            if (e.target === lightbox) {
+                                lightbox.style.opacity = '0';
+                                setTimeout(() => lightbox.remove(), 300);
+                            }
+                        });
                     });
-                })
-                .catch(error => console.error('Error loading blog posts:', error));
-        }
-
-        // إضافة تأثيرات عند التمرير
-        function addScrollEffects() {
-            const sections = document.querySelectorAll('.section');
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
                 });
-            }, {
-                threshold: 0.1
-            });
+            };
 
-            sections.forEach(section => {
-                section.classList.add('fade-in-section');
-                observer.observe(section);
-            });
-        }
+            // 4. Load critical images
+            const loadCriticalImages = () => {
+                const criticalImages = [
+                    'images/rd.jpg',
+                    'images/hero-bg.jpg'
+                ];
 
-        // تحديث الروابط في القائمة عند التمرير
-        function updateActiveNavLink() {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.links a');
+                criticalImages.forEach(src => {
+                    const img = new Image();
+                    img.src = src;
+                });
+            };
 
-            window.addEventListener('scroll', () => {
-                let current = '';
+            // Initialize all image functions
+            lazyLoadImages();
+            initImageHoverEffects();
+            initLightbox();
+            loadCriticalImages();
+
+            // ============ Add My Files Link to Nav ============
+            const addFilesNavItem = () => {
+                const navLinks = document.querySelector('.links');
+                if (!navLinks) return;
+
+                const filesNavItem = document.createElement('li');
+                filesNavItem.innerHTML = `
+            <a href="#files" class="ar-text">ملفاتي</a>
+            <a href="#files" class="en-text" style="display: none;">My Files</a>
+        `;
+
+                // Insert before contact link (assuming it's the 5th item)
+                if (navLinks.children.length >= 4) {
+                    navLinks.insertBefore(filesNavItem, navLinks.children[4]);
+                } else {
+                    navLinks.appendChild(filesNavItem);
+                }
+            };
+
+            addFilesNavItem();
+
+            // ============ Scroll Animations ============
+            const initScrollAnimations = () => {
+                // Add CSS for animations
+                const style = document.createElement('style');
+                style.textContent = `
+            .fade-in-section {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.6s ease, transform 0.6s ease;
+            }
+            .fade-in-section.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        `;
+                document.head.appendChild(style);
+
+                // Animate sections on scroll
+                const sections = document.querySelectorAll('.section');
+                const sectionObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, {
+                    threshold: 0.1
+                });
 
                 sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-
-                    if (pageYOffset >= (sectionTop - 300)) {
-                        current = section.getAttribute('id');
-                    }
+                    section.classList.add('fade-in-section');
+                    sectionObserver.observe(section);
                 });
 
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${current}`) {
-                        link.classList.add('active');
-                    }
+                // Update active nav link on scroll
+                const navLinks = document.querySelectorAll('.links a');
+                if (navLinks.length) {
+                    window.addEventListener('scroll', () => {
+                        let current = '';
+                        const scrollPosition = window.scrollY + 200;
+
+                        document.querySelectorAll('section').forEach(section => {
+                            const sectionTop = section.offsetTop;
+                            const sectionHeight = section.clientHeight;
+
+                            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                                current = section.getAttribute('id');
+                            }
+                        });
+
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${current}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    });
+                }
+            };
+
+            initScrollAnimations();
+
+            // ============ RGB Background Effect ============
+            const initRGBBackground = () => {
+                const rgbBackground = document.querySelector('.rgb-background');
+                if (!rgbBackground) return;
+
+                // Mouse movement effect
+                document.addEventListener('mousemove', (e) => {
+                    const x = e.clientX / window.innerWidth;
+                    const y = e.clientY / window.innerHeight;
+
+                    rgbBackground.style.animationDuration = `${10 + (x * 10)}s`;
+                    rgbBackground.style.opacity = `${0.3 + (y * 0.4)}`;
                 });
-            });
-        }
 
-        // تنفيذ جميع الوظائف عند تحميل الصفحة
-        document.addEventListener('DOMContentLoaded', function() {
-            animateTimeline();
-            loadBlogPosts();
-            addScrollEffects();
-            updateActiveNavLink();
+                // Scroll effect
+                window.addEventListener('scroll', () => {
+                    const scrollPercentage = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+                    rgbBackground.style.backgroundSize = `${150 + (scrollPercentage * 50)}% ${150 + (scrollPercentage * 50)}%`;
+                });
+            };
 
-            // إضافة تأثيرات CSS للعناصر الظاهرة
-            const style = document.createElement('style');
-            style.textContent = `
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        
-        .fade-in-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    `;
-            document.head.appendChild(style);
+            initRGBBackground();
         });
     </script>
-</body>
 
 </html>
