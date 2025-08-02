@@ -809,6 +809,191 @@
         margin-top: 15px;
         font-size: 1.2rem;
     }
+    /* أنماط المدونة */
+    .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    .blog-card {
+        background: var(--white);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .blog-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    .blog-img {
+        height: 200px;
+        overflow: hidden;
+    }
+    .blog-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+    }
+    .blog-card:hover .blog-img img {
+        transform: scale(1.05);
+    }
+    .blog-content {
+        padding: 1.5rem;
+    }
+    .blog-date {
+        display: block;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+    }
+    .blog-content h3 {
+        margin-bottom: 1rem;
+        color: var(--dark-bg);
+    }
+    .read-more {
+        display: inline-block;
+        margin-top: 1rem;
+        color: var(--primary-color);
+        font-weight: 500;
+        text-decoration: none;
+    }
+    .read-more:hover {
+        text-decoration: underline;
+    }
+    /* أنماط الخط الزمني للخبرات */
+    .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem 0;
+    }
+    .timeline::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--primary-color);
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .timeline-item {
+        position: relative;
+        margin-bottom: 3rem;
+        width: 100%;
+    }
+    .timeline-date {
+        position: absolute;
+        top: 0;
+        width: 120px;
+        padding: 0.5rem;
+        text-align: center;
+        background: var(--primary-color);
+        color: white;
+        border-radius: 5px;
+        font-weight: 500;
+    }
+    [dir="rtl"] .timeline-date {
+        right: 50%;
+        margin-right: -60px;
+    }
+    [dir="ltr"] .timeline-date {
+        left: 50%;
+        margin-left: -60px;
+    }
+    .timeline-content {
+        position: relative;
+        padding: 1.5rem;
+        background: var(--white);
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        width: calc(50% - 40px);
+    }
+    [dir="rtl"] .timeline-content {
+        margin-right: 60px;
+    }
+    [dir="ltr"] .timeline-content {
+        margin-left: 60px;
+    }
+    .timeline-item:nth-child(even) .timeline-content {
+        [dir="rtl"] & {
+            margin-right: auto;
+            margin-left: 60px;
+        }
+        
+        [dir="ltr"] & {
+            margin-left: auto;
+            margin-right: 60px;
+        }
+    }
+    .timeline-content h3 {
+        color: var(--dark-bg);
+        margin-bottom: 0.5rem;
+    }
+    .company {
+        display: block;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        font-weight: 500;
+    }
+    .timeline-content ul {
+        padding-right: 1rem;
+        [dir="ltr"] & {
+            padding-right: 0;
+            padding-left: 1rem;
+        }
+    }
+    .timeline-content li {
+        margin-bottom: 0.5rem;
+    }
+    /* تأثيرات للوضع الليلي */
+    body.dark-mode .blog-card,
+    body.dark-mode .timeline-content {
+        background: #2d2d2d;
+        color: #f0f0f0;
+    }
+    body.dark-mode .blog-content h3,
+    body.dark-mode .timeline-content h3 {
+        color: #f0f0f0;
+    }
+    @media (max-width: 768px) {
+        .timeline::before {
+            left: 30px;
+            [dir="ltr"] & {
+                left: auto;
+                right: 30px;
+            }
+        }
+        
+        .timeline-date {
+            position: relative;
+            top: auto;
+            left: auto;
+            right: auto;
+            margin: 0 0 1rem 0;
+            width: auto;
+            display: inline-block;
+        }
+        
+        .timeline-content {
+            width: auto;
+            margin: 0 0 0 60px;
+            [dir="ltr"] & {
+                margin: 0 60px 0 0;
+            }
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 60px;
+            [dir="ltr"] & {
+                margin-left: 0;
+                margin-right: 60px;
+            }
+        }
+    }
     </style>
 </head>
 
@@ -1155,7 +1340,53 @@
             </div>
         </div>
     </section>
+    <!-- بعد قسم المشاريع وقبل قسم الاتصال -->
+    <section id="blog" class="section">
+        <div class="container">
+            <h2 class="section-title ar-text">مقالاتي التقنية</h2>
+            <h2 class="section-title en-text" style="display: none;">Technical Articles</h2>
 
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <img src="images/embedded-systems.jpg" alt="الأنظمة المدمجة">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date ar-text">15 يونيو 2023</span>
+                        <span class="blog-date en-text" style="display: none;">June 15, 2023</span>
+
+                        <h3 class="ar-text">أساسيات تصميم الأنظمة المدمجة</h3>
+                        <h3 class="en-text" style="display: none;">Embedded Systems Design Fundamentals</h3>
+
+                        <p class="ar-text">مقال يتناول المبادئ الأساسية لتصميم الأنظمة المدمجة وكيفية تحسين أدائها.</p>
+                        <p class="en-text" style="display: none;">Article covering the fundamentals of embedded systems design and performance optimization.</p>
+
+                        <a href="#" class="read-more ar-text">قراءة المزيد</a>
+                        <a href="#" class="read-more en-text" style="display: none;">Read More</a>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <img src="images/iot-security.jpg" alt="أمن إنترنت الأشياء">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date ar-text">2 أغسطس 2023</span>
+                        <span class="blog-date en-text" style="display: none;">August 2, 2023</span>
+
+                        <h3 class="ar-text">تحديات أمن أنظمة IoT</h3>
+                        <h3 class="en-text" style="display: none;">IoT Security Challenges</h3>
+
+                        <p class="ar-text">استعراض لأهم التحديات الأمنية في أنترنت الأشياء وحلول مقترحة.</p>
+                        <p class="en-text" style="display: none;">Overview of major security challenges in IoT and proposed solutions.</p>
+
+                        <a href="#" class="read-more ar-text">قراءة المزيد</a>
+                        <a href="#" class="read-more en-text" style="display: none;">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title ar-text">اتصل بي</h2>
@@ -1553,6 +1784,129 @@
 
         // استدعاء الوظيفة عند التحميل
         window.addEventListener('load', loadCriticalImages);
+        // إضافة تأثيرات للخط الزمني
+        function animateTimeline() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            timelineItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = `opacity 0.5s ease ${index * 0.2}s, transform 0.5s ease ${index * 0.2}s`;
+                observer.observe(item);
+            });
+        }
+
+        // تحميل المقالات بشكل ديناميكي
+        function loadBlogPosts() {
+            fetch('api/blog-posts.json')
+                .then(response => response.json())
+                .then(posts => {
+                    const blogGrid = document.querySelector('.blog-grid');
+                    if (!blogGrid) return;
+
+                    blogGrid.innerHTML = '';
+
+                    posts.forEach(post => {
+                        const postElement = document.createElement('div');
+                        postElement.className = 'blog-card';
+                        postElement.innerHTML = `
+                    <div class="blog-img">
+                        <img src="${post.image}" alt="${post.title}">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">${post.date}</span>
+                        <h3>${post.title}</h3>
+                        <p>${post.excerpt}</p>
+                        <a href="${post.link}" class="read-more">Read More</a>
+                    </div>
+                `;
+
+                        blogGrid.appendChild(postElement);
+                    });
+                })
+                .catch(error => console.error('Error loading blog posts:', error));
+        }
+
+        // إضافة تأثيرات عند التمرير
+        function addScrollEffects() {
+            const sections = document.querySelectorAll('.section');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            sections.forEach(section => {
+                section.classList.add('fade-in-section');
+                observer.observe(section);
+            });
+        }
+
+        // تحديث الروابط في القائمة عند التمرير
+        function updateActiveNavLink() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.links a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+
+                    if (pageYOffset >= (sectionTop - 300)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        // تنفيذ جميع الوظائف عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            animateTimeline();
+            loadBlogPosts();
+            addScrollEffects();
+            updateActiveNavLink();
+
+            // إضافة تأثيرات CSS للعناصر الظاهرة
+            const style = document.createElement('style');
+            style.textContent = `
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    `;
+            document.head.appendChild(style);
+        });
     </script>
 </body>
 
